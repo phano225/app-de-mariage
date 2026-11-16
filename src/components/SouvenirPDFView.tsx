@@ -114,9 +114,6 @@ export const SouvenirPDFView: React.FC<SouvenirPDFViewProps> = ({ wedding }) => 
                   <MapPin className="w-3.5 h-3.5 text-wedding-orange flex-shrink-0 mt-0.5" />
                   <span>Cour familiale de la mariée, Lopou</span>
                 </div>
-                <div className="text-[11px] font-mono text-neutral-500 mt-1 pl-5">
-                  GPS : 5.419569, -4.469182
-                </div>
               </div>
             </div>
 

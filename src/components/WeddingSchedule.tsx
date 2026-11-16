@@ -110,12 +110,6 @@ export const WeddingSchedule: React.FC<WeddingScheduleProps> = ({ wedding }) => 
                     <span>Itinéraire Google Maps</span>
                     <ExternalLink className="w-3.5 h-3.5 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                   </a>
-
-                  {item.coordinates && (
-                    <span className="text-[11px] font-mono text-wedding-green-deep/60">
-                      GPS : 5.419, -4.469
-                    </span>
-                  )}
                 </div>
 
                 {/* Decorative corner accent */}

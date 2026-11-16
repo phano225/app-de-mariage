@@ -84,20 +84,6 @@ export const WeddingLocation: React.FC<WeddingLocationProps> = ({ wedding }) => 
                     {loc.address} • {loc.city}, {loc.country}
                   </p>
 
-                  {/* GPS Details if Lopou */}
-                  {isReception && loc.coordinates && (
-                    <div className="p-4 rounded-xl bg-wedding-green-deep/60 border border-wedding-gold/20 mb-4 space-y-1">
-                      <div className="flex items-center gap-2 text-xs font-mono text-wedding-gold">
-                        <Navigation className="w-3.5 h-3.5 text-wedding-orange" />
-                        <span>Latitude : {loc.coordinates.lat}</span>
-                      </div>
-                      <div className="flex items-center gap-2 text-xs font-mono text-wedding-gold">
-                        <Navigation className="w-3.5 h-3.5 text-wedding-orange" />
-                        <span>Longitude : {loc.coordinates.lng}</span>
-                      </div>
-                    </div>
-                  )}
-
                   {/* Access Tip */}
                   {loc.accessTip && (
                     <p className="text-xs font-serif italic text-wedding-ivory/80 leading-relaxed mb-6">
@@ -114,7 +100,7 @@ export const WeddingLocation: React.FC<WeddingLocationProps> = ({ wedding }) => 
                   className="w-full inline-flex items-center justify-center gap-3 px-6 py-3.5 rounded-full bg-gradient-to-r from-wedding-orange to-wedding-orange-warm text-white font-sans text-xs sm:text-sm font-semibold tracking-wider uppercase shadow-seal hover:shadow-gold hover:scale-[1.02] active:scale-95 transition-all duration-300"
                 >
                   <Navigation className="w-4 h-4" />
-                  <span>Ouvrir dans Google Maps</span>
+                  <span>Ouvrir l&apos;itinéraire Maps</span>
                   <ExternalLink className="w-3.5 h-3.5 opacity-80" />
                 </a>
 

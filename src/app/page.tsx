@@ -6,6 +6,7 @@ import { caroleEtBenjaminWedding } from '@/data/wedding-config';
 import { EnvelopeAnimation } from '@/components/EnvelopeAnimation';
 import { AudioPlayer } from '@/components/AudioPlayer';
 import { InvitationCover } from '@/components/InvitationCover';
+import { EngagementSection } from '@/components/EngagementSection';
 import { InvitationMessage } from '@/components/InvitationMessage';
 import { WeddingCountdown } from '@/components/WeddingCountdown';
 import { WeddingSchedule } from '@/components/WeddingSchedule';
@@ -34,7 +35,7 @@ export default function WeddingPage() {
 
       <AnimatePresence mode="wait">
         {!isOpened ? (
-          /* SCENE 1 & 2 : L'Arrivée et l'Ouverture de l'Enveloppe */
+          /* SCÈNE 1 & 2 : L'Arrivée et l'Ouverture de l'Enveloppe */
           <motion.div
             key="envelope"
             initial={{ opacity: 1 }}
@@ -47,16 +48,19 @@ export default function WeddingPage() {
             />
           </motion.div>
         ) : (
-          /* SCÈNES 3 À 10 : L'EXPÉRIENCE COMPLÈTE DU FAIRE-PART */
+          /* SCÈNES 3 À 10 : L'EXPÉRIENCE DU FAIRE-PART */
           <motion.div
             key="invitation-content"
-            initial={{ opacity: 0, y: 40 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
             className="w-full flex flex-col"
           >
-            {/* Scène 3 : Présentation des mariés & Couverture */}
+            {/* Scène 3 : Présentation des mariés & Couverture (Photo 1) */}
             <InvitationCover wedding={caroleEtBenjaminWedding} />
+
+            {/* Section Engagement : Alliances & Mains unies (Photo 2) */}
+            <EngagementSection wedding={caroleEtBenjaminWedding} />
 
             {/* Scène 4 : Message officiel d'invitation */}
             <InvitationMessage wedding={caroleEtBenjaminWedding} />

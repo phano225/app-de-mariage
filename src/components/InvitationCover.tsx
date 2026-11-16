@@ -68,11 +68,11 @@ export const InvitationCover: React.FC<InvitationCoverProps> = ({ wedding }) => 
           <div className="relative w-full h-full rounded-2xl overflow-hidden bg-black border border-wedding-gold/30">
             {/* Main Couple Photo */}
             <Image
-              src="/images/carole-benjamin/photo-1-portrait.webp"
+              src="/assets/C&B.jpeg"
               alt="Portrait officiel de Carole et Benjamin"
               fill
               priority
-              className="object-cover object-center transition-transform duration-700 hover:scale-105"
+              className="object-cover object-top transition-transform duration-700 hover:scale-105"
               sizes="(max-width: 640px) 90vw, (max-width: 1024px) 50vw, 450px"
             />
 

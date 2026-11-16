@@ -77,8 +77,8 @@ export const PhotoGallery: React.FC<PhotoGalleryProps> = ({ wedding }) => {
           </motion.p>
         </div>
 
-        {/* Gallery Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 items-stretch">
+        {/* Gallery Grid (Balanced 2-photo authentic layout) */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 items-stretch max-w-4xl mx-auto">
           {images.map((item, index) => (
             <motion.div
               key={item.id}
@@ -87,19 +87,19 @@ export const PhotoGallery: React.FC<PhotoGalleryProps> = ({ wedding }) => {
               viewport={{ once: true }}
               transition={{ duration: 0.7, delay: index * 0.15 }}
               onClick={() => setSelectedIndex(index)}
-              className="group relative cursor-pointer rounded-2xl overflow-hidden bg-wedding-green-deep border-2 border-wedding-gold/40 shadow-card hover:shadow-gold hover:border-wedding-gold transition-all duration-500 flex flex-col"
+              className="group relative cursor-pointer rounded-2xl overflow-hidden bg-wedding-green-deep border border-wedding-gold/40 shadow-card hover:shadow-gold hover:border-wedding-gold transition-all duration-500 flex flex-col"
             >
-              <div className="relative w-full aspect-[4/5] overflow-hidden bg-black">
+              <div className="relative w-full aspect-[4/3] overflow-hidden bg-black">
                 <Image
                   src={item.src}
                   alt={item.alt}
                   fill
-                  className="object-cover object-center transition-transform duration-700 group-hover:scale-108"
-                  sizes="(max-width: 768px) 100vw, 33vw"
+                  className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
+                  sizes="(max-width: 768px) 100vw, 50vw"
                 />
 
                 {/* Hover overlay with zoom icon */}
-                <div className="absolute inset-0 bg-wedding-green-deep/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                <div className="absolute inset-0 bg-wedding-green-deep/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                   <div className="w-12 h-12 rounded-full bg-wedding-orange text-white flex items-center justify-center shadow-lg transform scale-75 group-hover:scale-100 transition-transform duration-300">
                     <Maximize2 className="w-5 h-5" />
                   </div>
@@ -112,8 +112,8 @@ export const PhotoGallery: React.FC<PhotoGalleryProps> = ({ wedding }) => {
               </div>
 
               {/* Caption */}
-              <div className="p-4 bg-white flex-1 flex flex-col justify-center border-t border-wedding-gold/20">
-                <p className="font-serif text-sm sm:text-base font-semibold text-wedding-green line-clamp-2">
+              <div className="p-4 bg-white flex-1 flex flex-col justify-center border-t border-wedding-gold/20 text-center">
+                <p className="font-serif text-base font-semibold text-wedding-green">
                   {item.caption}
                 </p>
               </div>

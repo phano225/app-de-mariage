@@ -1,9 +1,9 @@
 'use client';
 
 import React, { useState } from 'react';
+import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import confetti from 'canvas-confetti';
-import { Sparkles, Heart } from 'lucide-react';
 import { WeddingConfig } from '@/data/wedding-config';
 
 interface EnvelopeAnimationProps {
@@ -21,126 +21,133 @@ export const EnvelopeAnimation: React.FC<EnvelopeAnimationProps> = ({
     if (stage !== 'closed') return;
     setStage('opening');
 
-    // Trigger subtle, elegant gold and orange confetti burst
     try {
       confetti({
-        particleCount: 45,
-        spread: 60,
-        origin: { y: 0.65 },
+        particleCount: 60,
+        spread: 75,
+        origin: { y: 0.55 },
         colors: ['#C6A45A', '#E66C32', '#F5EBDD', '#DFBE72'],
-        ticks: 180,
+        ticks: 200,
         gravity: 0.8,
-        scalar: 0.9,
+        scalar: 0.95,
       });
     } catch {
-      // Confetti is a visual enhancement, fails gracefully if canvas unsupported
+      // fallback
     }
 
-    // Complete animation sequence timing
     setTimeout(() => {
       setStage('opened');
       onOpened();
-    }, 1800);
+    }, 2400);
   };
 
   return (
-    <div className="relative min-h-screen w-full flex flex-col items-center justify-center p-4 overflow-hidden bg-emerald-luxury">
-      {/* Background Decorative Ambient Circles */}
+    <div className="relative min-h-[100dvh] w-full flex flex-col items-center justify-center px-4 py-8 overflow-hidden bg-emerald-luxury select-none">
+      {/* Background Lighting */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute -top-32 -left-32 w-96 h-96 rounded-full bg-wedding-green/30 blur-3xl" />
-        <div className="absolute -bottom-32 -right-32 w-96 h-96 rounded-full bg-wedding-orange/20 blur-3xl" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-wedding-gold/10 blur-3xl" />
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[550px] h-[550px] rounded-full bg-wedding-green/20 blur-[130px]" />
+        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 w-[350px] h-[350px] rounded-full bg-wedding-orange/10 blur-[120px]" />
       </div>
 
-      {/* Header Intro Badge */}
+      {/* Header Haute Papeterie */}
       <motion.div
-        initial={{ opacity: 0, y: -20 }}
+        initial={{ opacity: 0, y: -12 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.2 }}
-        className="text-center mb-8 z-10"
+        transition={{ duration: 0.8 }}
+        className="text-center mb-6 sm:mb-8 z-10 max-w-sm sm:max-w-md px-4 flex flex-col items-center"
       >
-        <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-wedding-green-deep/80 border border-wedding-gold/30 text-wedding-gold text-xs tracking-[0.25em] uppercase font-sans shadow-md backdrop-blur-md">
-          <Sparkles className="w-3.5 h-3.5 text-wedding-orange animate-pulse" />
-          Faire-part officiel de mariage
-          <Sparkles className="w-3.5 h-3.5 text-wedding-orange animate-pulse" />
-        </span>
-        <h1 className="mt-3 text-3xl sm:text-4xl md:text-5xl font-serif tracking-wider text-gold-foil">
+        <div className="flex items-center gap-3 mb-2">
+          <div className="w-8 h-[1px] bg-wedding-gold/40" />
+          <span className="font-serif text-[11px] sm:text-xs tracking-[0.3em] uppercase text-wedding-gold font-medium">
+            Faire-Part Officiel
+          </span>
+          <div className="w-8 h-[1px] bg-wedding-gold/40" />
+        </div>
+
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-serif tracking-wider text-gold-foil font-normal">
           {wedding.coupleNames.display}
         </h1>
-        <p className="mt-1 text-sm font-sans tracking-widest text-wedding-ivory/80 uppercase">
+
+        <p className="mt-1 text-xs font-sans tracking-[0.25em] text-wedding-ivory/80 uppercase">
           {wedding.eventDateFormatted.fullFrench}
         </p>
       </motion.div>
 
-      {/* Interactive Envelope Container */}
-      <div className="relative w-full max-w-md sm:max-w-lg aspect-[4/3] flex items-center justify-center z-20 perspective-[1000px]">
-        {/* ENVELOPE SHADOW */}
-        <div className="absolute inset-x-8 bottom-2 h-10 bg-black/40 rounded-full blur-xl transform scale-95" />
+      {/* ENVELOPE (Pure Geometric Centering) */}
+      <div className="relative w-full max-w-[320px] xs:max-w-[350px] sm:max-w-[420px] aspect-[1.4/1] flex items-center justify-center z-20">
+        {/* Shadow */}
+        <div className="absolute inset-x-6 -bottom-4 h-6 bg-black/60 rounded-full blur-xl" />
 
-        {/* ENVELOPE WRAPPER */}
-        <motion.div
-          animate={
-            stage === 'opening'
-              ? { scale: [1, 1.03, 0.98, 1], y: [0, -10, 10, 0] }
-              : {}
-          }
-          transition={{ duration: 1.2 }}
-          className="relative w-full h-full rounded-2xl shadow-envelope overflow-hidden border border-wedding-gold/40 bg-wedding-green-deep"
-        >
-          {/* Inner Card that slides up */}
+        {/* Envelope Shell */}
+        <div className="relative w-full h-full rounded-2xl bg-[#092218] border border-wedding-gold/50 shadow-envelope overflow-visible">
+          
+          {/* 1. LA CARTE INTÉRIEURE (S'élève majestueusement et révèle Carole & Benjamin) */}
           <motion.div
-            initial={{ y: 0 }}
-            animate={stage === 'opening' ? { y: -220, opacity: 1 } : { y: 0 }}
-            transition={{ duration: 1.2, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
-            className="absolute inset-x-6 top-6 bottom-6 rounded-xl bg-paper-texture border border-wedding-gold/50 shadow-card p-6 flex flex-col items-center justify-center text-center z-10"
+            initial={{ y: 0, opacity: 0 }}
+            animate={
+              stage === 'opening'
+                ? { y: -190, opacity: 1 }
+                : { y: 0, opacity: 0 }
+            }
+            transition={{ duration: 1.3, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
+            className="absolute inset-x-3 sm:inset-x-5 top-3 bottom-3 rounded-xl bg-paper-texture border-2 border-wedding-gold/70 shadow-2xl p-4 flex flex-col items-center justify-center text-center z-25"
           >
-            <div className="w-12 h-12 rounded-full border border-wedding-gold/40 flex items-center justify-center mb-2 text-wedding-gold">
-              <Heart className="w-6 h-6 text-wedding-orange fill-wedding-orange/30" />
+            {/* Vraie Photo du Couple */}
+            <div className="relative w-18 h-18 sm:w-22 sm:h-22 rounded-full overflow-hidden border-2 border-wedding-gold shadow-md mb-2">
+              <Image
+                src="/assets/C&B.jpeg"
+                alt="Carole & Benjamin"
+                fill
+                sizes="88px"
+                className="object-cover object-top"
+                priority
+              />
             </div>
-            <p className="font-serif text-xs tracking-[0.3em] uppercase text-wedding-green-deep font-semibold">
-              Union Sacrée
+
+            <p className="font-serif text-[10px] tracking-[0.25em] uppercase text-wedding-gold-dark font-bold">
+              Invitation d’Honneur
             </p>
-            <h2 className="font-serif text-2xl sm:text-3xl text-wedding-green font-bold tracking-wide mt-1">
+            <h2 className="font-serif text-lg sm:text-2xl text-wedding-green font-bold tracking-wide">
               {wedding.coupleNames.display}
             </h2>
-            <div className="w-16 h-0.5 bg-wedding-gold my-2" />
-            <p className="font-sans text-[11px] uppercase tracking-widest text-wedding-green-deep/70">
+            <div className="w-12 h-[1.5px] bg-wedding-orange my-1.5 rounded-full" />
+            <p className="font-sans text-[10px] sm:text-[11px] uppercase tracking-wider text-wedding-green-deep/90 font-medium">
               Samedi 30 Janvier 2027
             </p>
-            <p className="font-sans text-[10px] uppercase tracking-wider text-wedding-orange font-medium mt-1">
-              Dabou &amp; Lopou
+            <p className="font-sans text-[9px] uppercase tracking-widest text-wedding-orange font-semibold">
+              Mairie de Dabou • Lopou
             </p>
           </motion.div>
 
-          {/* Envelope Pocket Body (Bottom and side folds) */}
-          <div className="absolute inset-0 pointer-events-none z-20">
-            {/* Left triangle flap */}
+          {/* 2. LE CORPS DE L'ENVELOPPE (Plis géométriques convergeant à 50% 50%) */}
+          <div className="absolute inset-0 rounded-2xl overflow-hidden pointer-events-none z-20">
+            {/* Pli gauche */}
             <div
-              className="absolute left-0 bottom-0 top-0 w-1/2 bg-wedding-green border-r border-wedding-gold/30"
+              className="absolute inset-0 bg-[#0F3525] border-r border-wedding-gold/25"
               style={{
-                clipPath: 'polygon(0 0, 100% 50%, 0 100%)',
-                boxShadow: 'inset 0 0 25px rgba(0,0,0,0.4)',
+                clipPath: 'polygon(0% 0%, 0% 100%, 50% 50%)',
+                filter: 'drop-shadow(2px 0 4px rgba(0,0,0,0.3))',
               }}
             />
-            {/* Right triangle flap */}
+            {/* Pli droit */}
             <div
-              className="absolute right-0 bottom-0 top-0 w-1/2 bg-wedding-green border-l border-wedding-gold/30"
+              className="absolute inset-0 bg-[#0F3525] border-l border-wedding-gold/25"
               style={{
-                clipPath: 'polygon(100% 0, 0 50%, 100% 100%)',
-                boxShadow: 'inset 0 0 25px rgba(0,0,0,0.4)',
+                clipPath: 'polygon(100% 0%, 100% 100%, 50% 50%)',
+                filter: 'drop-shadow(-2px 0 4px rgba(0,0,0,0.3))',
               }}
             />
-            {/* Bottom triangle flap */}
+            {/* Pli bas */}
             <div
-              className="absolute inset-x-0 bottom-0 h-3/5 bg-wedding-green-deep border-t border-wedding-gold/40"
+              className="absolute inset-0 bg-[#0B2C1F] border-t border-wedding-gold/35"
               style={{
-                clipPath: 'polygon(0 100%, 50% 25%, 100% 100%)',
-                boxShadow: '0 -4px 15px rgba(0,0,0,0.3)',
+                clipPath: 'polygon(0% 100%, 100% 100%, 50% 50%)',
+                filter: 'drop-shadow(0 -3px 6px rgba(0,0,0,0.35))',
               }}
             />
           </div>
 
-          {/* Top Flap (Rabat) that folds open */}
+          {/* 3. LE RABAT SUPÉRIEUR (Point à 50% 50%, s'ouvre vers le haut) */}
           <motion.div
             initial={{ rotateX: 0 }}
             animate={
@@ -148,68 +155,79 @@ export const EnvelopeAnimation: React.FC<EnvelopeAnimationProps> = ({
                 ? {
                     rotateX: 180,
                     zIndex: 5,
-                    transition: { duration: 0.8, ease: 'easeInOut' },
+                    transition: { duration: 0.85, ease: 'easeInOut' },
                   }
                 : { rotateX: 0 }
             }
-            style={{ transformOrigin: 'top center' }}
-            className="absolute inset-x-0 top-0 h-1/2 z-30"
+            style={{
+              transformOrigin: 'top center',
+              transformStyle: 'preserve-3d',
+            }}
+            className="absolute inset-x-0 top-0 h-full pointer-events-none z-30"
           >
             <div
-              className="w-full h-full bg-wedding-green-light border-b border-wedding-gold/60 shadow-lg"
+              className="w-full h-full bg-[#174D36] border-b border-wedding-gold/60"
               style={{
-                clipPath: 'polygon(0 0, 100% 0, 50% 100%)',
-                boxShadow: '0 8px 20px rgba(0,0,0,0.35)',
+                clipPath: 'polygon(0% 0%, 100% 0%, 50% 50%)',
+                filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.4))',
               }}
             />
           </motion.div>
 
-          {/* WAX SEAL (Sceau de cire orangé & doré) */}
-          <AnimatePresence>
-            {stage === 'closed' && (
-              <motion.div
-                initial={{ scale: 0.9, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                exit={{ scale: 1.5, opacity: 0, rotate: 20 }}
-                transition={{ duration: 0.4 }}
-                className="absolute top-[48%] left-1/2 -translate-x-1/2 -translate-y-1/2 z-40 cursor-pointer group"
-                onClick={triggerOpen}
-              >
-                <div className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-full wax-seal flex items-center justify-center p-1.5 transition-transform duration-300 group-hover:scale-110">
-                  {/* Wax scalloped edges */}
-                  <div className="w-full h-full rounded-full wax-seal-inner border-2 border-wedding-gold/60 flex flex-col items-center justify-center text-center">
-                    <span className="font-serif text-base sm:text-lg font-bold text-wedding-ivory-light tracking-wider drop-shadow-md">
-                      {wedding.coupleNames.initials}
-                    </span>
-                    <span className="text-[9px] font-sans tracking-widest uppercase text-wedding-gold-bright font-semibold">
-                      2027
-                    </span>
+          {/* 4. LE SCEAU DE CIRE (Positionné STRICTEMENT au centre absolu dans un conteneur non-altéré) */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-40 flex items-center justify-center pointer-events-auto">
+            <AnimatePresence>
+              {stage === 'closed' && (
+                <motion.div
+                  initial={{ scale: 0.9, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  exit={{ scale: 1.4, opacity: 0, rotate: 20 }}
+                  transition={{ duration: 0.25 }}
+                  onClick={triggerOpen}
+                  className="cursor-pointer group select-none"
+                  title="Cliquer pour ouvrir"
+                >
+                  <div className="relative w-16 h-16 sm:w-20 sm:h-20 rounded-full wax-seal flex items-center justify-center p-1.5 transition-transform duration-300 group-hover:scale-110 active:scale-95 shadow-seal">
+                    <div className="w-full h-full rounded-full wax-seal-inner border border-wedding-gold/70 flex flex-col items-center justify-center text-center">
+                      {/* Monogramme C & B rigoureusement centré */}
+                      <div className="flex items-center justify-center gap-1 leading-none">
+                        <span className="font-serif text-sm sm:text-base font-bold text-wedding-ivory-light">
+                          C
+                        </span>
+                        <span className="text-[10px] text-wedding-gold font-light">&amp;</span>
+                        <span className="font-serif text-sm sm:text-base font-bold text-wedding-ivory-light">
+                          B
+                        </span>
+                      </div>
+                      <span className="text-[8px] font-sans tracking-[0.2em] uppercase text-wedding-gold font-semibold mt-1">
+                        2027
+                      </span>
+                    </div>
                   </div>
-                </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </motion.div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+        </div>
       </div>
 
-      {/* Button Invitation to open */}
+      {/* BOUTON HAUTE PAPETERIE */}
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.4 }}
-        className="mt-8 text-center z-10"
+        transition={{ duration: 0.8, delay: 0.2 }}
+        className="mt-8 text-center z-10 w-full max-w-xs"
       >
         <button
           onClick={triggerOpen}
           disabled={stage !== 'closed'}
-          className="group relative inline-flex items-center gap-3 px-8 py-4 rounded-full bg-orange-sunset text-white font-sans font-semibold text-base sm:text-lg tracking-wider uppercase shadow-seal hover:shadow-gold hover:scale-105 active:scale-95 transition-all duration-300 disabled:opacity-50 disabled:pointer-events-none"
+          className="group relative w-full inline-flex items-center justify-center px-8 py-3.5 rounded-full border border-wedding-gold/70 bg-[#0E3324] hover:bg-wedding-gold text-wedding-ivory-light hover:text-[#0E3324] font-serif text-sm tracking-[0.25em] uppercase shadow-lg transition-all duration-300 active:scale-95 disabled:opacity-50"
         >
-          <Sparkles className="w-5 h-5 text-wedding-ivory group-hover:rotate-12 transition-transform duration-300" />
-          <span>Ouvrir mon invitation</span>
-          <Heart className="w-5 h-5 text-wedding-ivory group-hover:scale-125 fill-current transition-transform duration-300" />
+          <span>Ouvrir l&apos;Invitation</span>
         </button>
-        <p className="mt-3 text-xs font-sans tracking-widest text-wedding-ivory/60 uppercase">
-          Cliquez pour découvrir le faire-part interactif
+
+        <p className="mt-2.5 text-[11px] font-serif italic tracking-wider text-wedding-ivory/70">
+          Touchez l&apos;enveloppe pour découvrir le faire-part
         </p>
       </motion.div>
     </div>
