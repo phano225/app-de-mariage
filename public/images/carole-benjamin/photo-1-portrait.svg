@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" width="800" height="1000">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0f0d" />
+      <stop offset="50%" stop-color="#0e1713" />
+      <stop offset="100%" stop-color="#070a09" />
+    </linearGradient>
+    <radialGradient id="balloonGlow" cx="40%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#ff4b5c" />
+      <stop offset="40%" stop-color="#e01a33" />
+      <stop offset="85%" stop-color="#990b1c" />
+      <stop offset="100%" stop-color="#550009" />
+    </radialGradient>
+    <linearGradient id="goldText" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#C6A45A" />
+      <stop offset="50%" stop-color="#FDF3CF" />
+      <stop offset="100%" stop-color="#C6A45A" />
+    </linearGradient>
+    <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="12" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="1000" fill="url(#bgGrad)" />
+
+  <!-- Subtle Gold Frame -->
+  <rect x="25" y="25" width="750" height="950" rx="16" fill="none" stroke="#C6A45A" stroke-width="1.5" stroke-opacity="0.4" />
+  <rect x="35" y="35" width="730" height="930" rx="12" fill="none" stroke="#C6A45A" stroke-width="0.8" stroke-dasharray="6,4" stroke-opacity="0.3" />
+
+  <!-- Couple Silhouette & Lighting -->
+  <g transform="translate(0, 100)">
+    <!-- Aura behind couple -->
+    <ellipse cx="400" cy="560" rx="260" ry="240" fill="#174D36" opacity="0.18" />
+    <ellipse cx="400" cy="540" rx="180" ry="160" fill="#E66C32" opacity="0.12" />
+
+    <!-- Groom silhouette (Benjamin) -->
+    <path d="M 230 780 C 230 650, 270 540, 350 510 C 320 490, 310 440, 320 400 C 330 350, 370 330, 400 330 C 410 330, 420 332, 425 336 C 415 370, 425 430, 445 460 C 460 480, 450 520, 410 545 C 450 575, 470 650, 480 780 Z" fill="#111815" stroke="#C6A45A" stroke-width="1" stroke-opacity="0.3" />
+
+    <!-- Bride silhouette (Carole) -->
+    <path d="M 370 780 C 370 670, 410 570, 450 535 C 440 510, 435 460, 455 420 C 475 380, 510 375, 535 390 C 560 410, 565 450, 550 490 C 540 520, 520 545, 500 560 C 540 600, 580 670, 600 780 Z" fill="#141d19" stroke="#E66C32" stroke-width="1" stroke-opacity="0.3" />
+
+    <!-- Red Heart-shaped Balloon -->
+    <g transform="translate(400, 230)">
+      <!-- Balloon string -->
+      <path d="M 0 65 Q 15 130 -10 200 T 20 280" fill="none" stroke="#C6A45A" stroke-width="1.8" stroke-opacity="0.75" />
+      
+      <!-- Balloon glow behind -->
+      <path d="M 0 50 C -60 -10 -90 -55 -70 -100 C -50 -140 0 -130 0 -70 C 0 -130 50 -140 70 -100 C 90 -55 60 -10 0 50 Z" fill="#ff1e38" opacity="0.35" filter="url(#softGlow)" />
+      
+      <!-- Balloon Body -->
+      <path d="M 0 50 C -60 -10 -90 -55 -70 -100 C -50 -140 0 -130 0 -70 C 0 -130 50 -140 70 -100 C 90 -55 60 -10 0 50 Z" fill="url(#balloonGlow)" />
+      
+      <!-- Balloon highlights -->
+      <path d="M -50 -95 C -40 -120 -15 -115 -10 -85 C -25 -80 -40 -70 -50 -95 Z" fill="#ffffff" opacity="0.5" />
+      <circle cx="-35" cy="-90" r="4" fill="#ffffff" opacity="0.8" />
+      
+      <!-- Tie Knot -->
+      <polygon points="0,50 -6,62 6,62" fill="#990b1c" />
+    </g>
+  </g>
+
+  <!-- Golden Stars & Sparkles -->
+  <g fill="#DFBE72" opacity="0.75">
+    <circle cx="210" cy="260" r="2.5" />
+    <circle cx="620" cy="290" r="3" />
+    <circle cx="160" cy="480" r="2" />
+    <circle cx="670" cy="520" r="2.5" />
+    <circle cx="300" cy="180" r="2" />
+    <circle cx="530" cy="190" r="2" />
+  </g>
+
+  <!-- Typography at bottom -->
+  <text x="400" y="850" text-anchor="middle" font-family="Georgia, serif" font-size="28" letter-spacing="4" fill="url(#goldText)">CAROLE &amp; BENJAMIN</text>
+  <text x="400" y="885" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" letter-spacing="3" fill="#E66C32">SAMEDI 30 JANVIER 2027</text>
+  <text x="400" y="915" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" letter-spacing="2" fill="#FAF5EE" opacity="0.7">DABOU &amp; LOPOU — CÔTE D'IVOIRE</text>
+</svg>

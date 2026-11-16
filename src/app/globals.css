@@ -1,0 +1,132 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-green-deep: #0E3324;
+    --color-green-primary: #174D36;
+    --color-orange-warm: #E66C32;
+    --color-ivory-bg: #F5EBDD;
+    --color-gold-accent: #C6A45A;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+    background-color: #0E3324;
+    color: #0E3324;
+  }
+
+  body {
+    overflow-x: hidden;
+    font-feature-settings: "liga" 1, "kern" 1;
+    text-rendering: optimizeLegibility;
+  }
+}
+
+/* Textured Luxury Paper Effect */
+.bg-paper-texture {
+  background-color: #FAF5EE;
+  background-image: radial-gradient(rgba(198, 164, 90, 0.08) 1px, transparent 1px),
+                    radial-gradient(rgba(23, 77, 54, 0.04) 1px, transparent 1px);
+  background-size: 20px 20px;
+  background-position: 0 0, 10px 10px;
+}
+
+.bg-emerald-luxury {
+  background: radial-gradient(circle at 50% 30%, #174D36 0%, #0E3324 70%, #071A12 100%);
+}
+
+/* Gold Foil Text Shimmer */
+.text-gold-foil {
+  background: linear-gradient(135deg, #DFBE72 0%, #FDF3CF 35%, #C6A45A 70%, #9B7E3E 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gold-bright {
+  background: linear-gradient(135deg, #FFE8A3 0%, #DFBE72 50%, #C6A45A 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Gold border gradient */
+.border-gold-gradient {
+  border-image: linear-gradient(135deg, #C6A45A, #FDF3CF, #9B7E3E) 1;
+}
+
+/* Wax Seal 3D Styling */
+.wax-seal {
+  background: radial-gradient(circle at 35% 30%, #FF8A50 0%, #E66C32 45%, #B84715 80%, #7A2805 100%);
+  box-shadow: 
+    inset 0 2px 4px rgba(255, 255, 255, 0.4),
+    inset 0 -3px 6px rgba(0, 0, 0, 0.5),
+    0 8px 20px rgba(230, 108, 50, 0.45),
+    0 3px 6px rgba(0, 0, 0, 0.3);
+}
+
+.wax-seal-inner {
+  box-shadow: 
+    inset 0 2px 5px rgba(0, 0, 0, 0.4),
+    0 1px 2px rgba(255, 255, 255, 0.2);
+}
+
+/* Golden Ribbon Accent */
+.gold-divider {
+  background: linear-gradient(90deg, transparent 0%, #C6A45A 30%, #FDF3CF 50%, #C6A45A 70%, transparent 100%);
+  height: 1px;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0E3324;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #C6A45A;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #DFBE72;
+}
+
+/* Prefers Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Print Styles for Souvenir PDF */
+@media print {
+  body {
+    background: #FFFFFF !important;
+    color: #174D36 !important;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .print-only {
+    display: block !important;
+  }
+
+  @page {
+    margin: 1.2cm;
+    size: A4 portrait;
+  }
+
+  .page-break-after {
+    page-break-after: always;
+  }
+}

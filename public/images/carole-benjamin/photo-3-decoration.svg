@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700" width="1000" height="700">
+  <defs>
+    <linearGradient id="bgDeco" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0E3324" />
+      <stop offset="60%" stop-color="#174D36" />
+      <stop offset="100%" stop-color="#082117" />
+    </linearGradient>
+    <linearGradient id="goldArch" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFE8A3" />
+      <stop offset="50%" stop-color="#C6A45A" />
+      <stop offset="100%" stop-color="#8F6C27" />
+    </linearGradient>
+    <linearGradient id="orangeFloral" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFA26B" />
+      <stop offset="50%" stop-color="#E66C32" />
+      <stop offset="100%" stop-color="#B8420E" />
+    </linearGradient>
+  </defs>
+
+  <rect width="1000" height="700" fill="url(#bgDeco)" />
+
+  <!-- Outer frame -->
+  <rect x="25" y="25" width="950" height="650" rx="16" fill="none" stroke="#C6A45A" stroke-width="1.5" stroke-opacity="0.4" />
+  <rect x="35" y="35" width="930" height="630" rx="12" fill="none" stroke="#E66C32" stroke-width="0.8" stroke-dasharray="6,4" stroke-opacity="0.3" />
+
+  <!-- Botanical Palm Fronds (Emerald Leaves) -->
+  <g opacity="0.6">
+    <path d="M 60 620 Q 150 480 280 440" fill="none" stroke="#256B4D" stroke-width="5" />
+    <path d="M 120 540 Q 180 500 240 520" fill="none" stroke="#2D805C" stroke-width="3" />
+    <path d="M 160 500 Q 220 440 290 480" fill="none" stroke="#2D805C" stroke-width="3" />
+    
+    <path d="M 940 620 Q 850 480 720 440" fill="none" stroke="#256B4D" stroke-width="5" />
+    <path d="M 880 540 Q 820 500 760 520" fill="none" stroke="#2D805C" stroke-width="3" />
+  </g>
+
+  <!-- Ceremonial Arch in Gold -->
+  <g transform="translate(500, 360)">
+    <!-- Arch ring -->
+    <path d="M -220 180 A 220 220 0 0 1 220 180" fill="none" stroke="url(#goldArch)" stroke-width="5" />
+    <path d="M -200 180 A 200 200 0 0 1 200 180" fill="none" stroke="url(#goldArch)" stroke-width="2" stroke-dasharray="6,6" opacity="0.7" />
+
+    <!-- Lush Floral Cluster Left Top (Orange, Ivory, Gold) -->
+    <g transform="translate(-160, -100)">
+      <circle cx="0" cy="0" r="38" fill="url(#orangeFloral)" />
+      <circle cx="35" cy="15" r="30" fill="#F5EBDD" />
+      <circle cx="-25" cy="25" r="28" fill="#F0854A" />
+      <circle cx="10" cy="-30" r="25" fill="#FFE8A3" />
+      <circle cx="-35" cy="-15" r="22" fill="#E66C32" />
+      <!-- Floral accents -->
+      <circle cx="0" cy="0" r="8" fill="#8F6C27" />
+    </g>
+
+    <!-- Lush Floral Cluster Right (Orange & Green) -->
+    <g transform="translate(160, -80)">
+      <circle cx="0" cy="0" r="36" fill="url(#orangeFloral)" />
+      <circle cx="-30" cy="15" r="32" fill="#F5EBDD" />
+      <circle cx="28" cy="20" r="26" fill="#F0854A" />
+      <circle cx="-10" cy="-28" r="24" fill="#C6A45A" />
+      <!-- Palm spray -->
+      <path d="M 30 0 Q 70 -40 100 -20" fill="none" stroke="#2D805C" stroke-width="4" />
+      <path d="M 30 15 Q 80 10 110 40" fill="none" stroke="#2D805C" stroke-width="4" />
+    </g>
+
+    <!-- Center Monogram Emblem -->
+    <circle cx="0" cy="20" r="70" fill="#0A2218" stroke="url(#goldArch)" stroke-width="3" />
+    <circle cx="0" cy="20" r="62" fill="none" stroke="#E66C32" stroke-width="1" stroke-dasharray="4,4" />
+    <text x="0" y="32" text-anchor="middle" font-family="Georgia, serif" font-size="34" font-weight="bold" letter-spacing="3" fill="url(#goldArch)">C &amp; B</text>
+  </g>
+
+  <!-- Color Swatches Bar -->
+  <g transform="translate(350, 560)">
+    <!-- Swatch 1: Deep Green -->
+    <rect x="0" y="0" width="60" height="20" rx="4" fill="#174D36" stroke="#C6A45A" stroke-width="1" />
+    <text x="30" y="36" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="#FAF5EE">VERT</text>
+
+    <!-- Swatch 2: Orange -->
+    <rect x="80" y="0" width="60" height="20" rx="4" fill="#E66C32" stroke="#C6A45A" stroke-width="1" />
+    <text x="110" y="36" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="#FAF5EE">ORANGE</text>
+
+    <!-- Swatch 3: Ivory -->
+    <rect x="160" y="0" width="60" height="20" rx="4" fill="#F5EBDD" stroke="#C6A45A" stroke-width="1" />
+    <text x="190" y="36" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="#FAF5EE">IVOIRE</text>
+
+    <!-- Swatch 4: Gold -->
+    <rect x="240" y="0" width="60" height="20" rx="4" fill="#C6A45A" stroke="#FFFFFF" stroke-width="1" />
+    <text x="270" y="36" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="10" fill="#FAF5EE">OR</text>
+  </g>
+
+  <!-- Title -->
+  <text x="500" y="110" text-anchor="middle" font-family="Georgia, serif" font-size="28" letter-spacing="4" fill="url(#goldArch)">HARMONIE FLORALE &amp; NUPTIALE</text>
+  <text x="500" y="140" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" letter-spacing="3" fill="#E66C32">INSPIRATION &amp; SCÉNOGRAPHIE DE MARIAGE</text>
+</svg>
