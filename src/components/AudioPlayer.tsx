@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
-import { Volume2, VolumeX, Music } from 'lucide-react';
+import { Volume2, VolumeX } from 'lucide-react';
 
 interface AudioPlayerProps {
   audioSrc?: string;
@@ -13,42 +13,76 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({
   autoPlayTrigger = false,
 }) => {
   const [isPlaying, setIsPlaying] = useState(false);
-  const [hasInteracted, setHasInteracted] = useState(false);
-  const [audioAvailable, setAudioAvailable] = useState(true);
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  const userManuallyPaused = useRef(false);
 
-  // Auto-play when user triggers envelope open (respects browser policy since it was triggered by a user click)
+  // Démarre la lecture si l'utilisateur n'a pas explicitement coupé la musique
+  const startPlayback = () => {
+    if (userManuallyPaused.current) return;
+    const audio = audioRef.current;
+    if (!audio) return;
+
+    audio
+      .play()
+      .then(() => {
+        setIsPlaying(true);
+      })
+      .catch(() => {
+        // Si le navigateur bloque l'autoplay direct sans geste préalable,
+        // les écouteurs d'interaction ci-dessous prendront le relais immédiatement.
+      });
+  };
+
   useEffect(() => {
-    if (autoPlayTrigger && !hasInteracted && audioRef.current) {
-      audioRef.current
-        .play()
-        .then(() => {
-          setIsPlaying(true);
-          setHasInteracted(true);
-        })
-        .catch(() => {
-          // Browser prevented autoplay or file not found yet; remains paused
-          setIsPlaying(false);
-        });
-    }
-  }, [autoPlayTrigger, hasInteracted]);
+    const audio = audioRef.current;
+    if (!audio) return;
 
-  const togglePlay = () => {
-    if (!audioRef.current) return;
-    setHasInteracted(true);
+    // 1. Tenter de lancer le son immédiatement au chargement de la page
+    startPlayback();
+
+    // 2. Déclencheur au premier geste utilisateur (clic, tap, touche) si la politique du navigateur restreint le direct
+    const handleFirstInteraction = () => {
+      startPlayback();
+    };
+
+    window.addEventListener('click', handleFirstInteraction, { passive: true });
+    window.addEventListener('touchstart', handleFirstInteraction, { passive: true });
+    window.addEventListener('pointerdown', handleFirstInteraction, { passive: true });
+    window.addEventListener('keydown', handleFirstInteraction, { passive: true });
+
+    return () => {
+      window.removeEventListener('click', handleFirstInteraction);
+      window.removeEventListener('touchstart', handleFirstInteraction);
+      window.removeEventListener('pointerdown', handleFirstInteraction);
+      window.removeEventListener('keydown', handleFirstInteraction);
+    };
+  }, [audioSrc]);
+
+  // Si un déclencheur explicite survient (ex: ouverture de l'enveloppe)
+  useEffect(() => {
+    if (autoPlayTrigger) {
+      startPlayback();
+    }
+  }, [autoPlayTrigger]);
+
+  const togglePlay = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    const audio = audioRef.current;
+    if (!audio) return;
 
     if (isPlaying) {
-      audioRef.current.pause();
+      audio.pause();
       setIsPlaying(false);
+      userManuallyPaused.current = true;
     } else {
-      audioRef.current
+      userManuallyPaused.current = false;
+      audio
         .play()
         .then(() => {
           setIsPlaying(true);
         })
         .catch((err) => {
-          console.warn('Audio play request failed or audio file not provided yet:', err);
-          setAudioAvailable(false);
+          console.warn('Audio play request failed:', err);
         });
     }
   };
@@ -58,13 +92,13 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({
       <audio
         ref={audioRef}
         src={audioSrc}
+        autoPlay
         loop
         preload="auto"
-        onError={() => {
-          // File not provided yet; keep UI gracefully visible for when file is dropped
-          setAudioAvailable(false);
+        onPlay={() => setIsPlaying(true)}
+        onPause={() => {
+          if (audioRef.current?.paused) setIsPlaying(false);
         }}
-        onCanPlay={() => setAudioAvailable(true)}
       />
 
       <button
