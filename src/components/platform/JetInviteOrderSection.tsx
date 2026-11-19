@@ -116,7 +116,7 @@ export function JetInviteOrderSection() {
       `\nJe suis prêt(e) à vous transmettre les photos nécessaires et à finaliser ma commande. Merci !`;
 
     const encoded = encodeURIComponent(message);
-    const targetNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '2250700000000';
+    const targetNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '2250777620864';
     const cleanNumber = targetNumber.replace(/[^0-9]/g, '');
     const url = `https://wa.me/${cleanNumber}?text=${encoded}`;
     window.open(url, '_blank');

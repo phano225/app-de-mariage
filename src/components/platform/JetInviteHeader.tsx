@@ -46,7 +46,7 @@ export function JetInviteHeader() {
         {/* Action Buttons */}
         <div className="hidden md:flex items-center gap-3">
           <a
-            href={`https://wa.me/${(process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '2250700000000').replace(/[^0-9]/g, '')}`}
+            href={`https://wa.me/${(process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '2250777620864').replace(/[^0-9]/g, '')}`}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-white border border-slate-200 hover:border-emerald-300 text-slate-700 hover:text-emerald-700 font-medium text-xs shadow-sm transition-all hover:shadow"
@@ -100,7 +100,7 @@ export function JetInviteHeader() {
           </a>
           <div className="pt-4 border-t border-slate-100 flex flex-col gap-2.5">
             <a
-              href="https://wa.me/2250700000000"
+              href={`https://wa.me/${(process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '2250777620864').replace(/[^0-9]/g, '')}`}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-center gap-2 py-3 rounded-full border border-slate-200 text-slate-700 text-sm font-semibold"

@@ -92,7 +92,9 @@ export function OrderWizard() {
 
     const encoded = encodeURIComponent(text);
     // WhatsApp destination number (Studio JetInvite)
-    const whatsappUrl = `https://wa.me/2250700000000?text=${encoded}`;
+    const targetNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '2250777620864';
+    const cleanNumber = targetNumber.replace(/[^0-9]/g, '');
+    const whatsappUrl = `https://wa.me/${cleanNumber}?text=${encoded}`;
     
     // Open WhatsApp in new tab
     window.open(whatsappUrl, '_blank');

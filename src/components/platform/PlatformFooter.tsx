@@ -49,13 +49,13 @@ export function PlatformFooter() {
             <h4 className="text-xs font-bold uppercase tracking-wider text-slate-800">Support Client</h4>
             <div className="space-y-2 text-xs">
               <a
-                href="https://wa.me/2250700000000"
+                href={`https://wa.me/${(process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '2250777620864').replace(/[^0-9]/g, '')}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 text-emerald-600 hover:text-emerald-700 font-semibold"
               >
                 <MessageCircle className="w-4 h-4 fill-emerald-500 text-emerald-500" />
-                <span>Contact direct WhatsApp</span>
+                <span>Contact direct WhatsApp (+225 07 77 62 08 64)</span>
               </a>
               <p className="text-slate-400">Assistance disponible 7j/7 pour vos commandes.</p>
             </div>
