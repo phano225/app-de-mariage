@@ -1,93 +1,44 @@
-'use client';
+import React from 'react';
+import { Metadata } from 'next';
+import { JetInviteHeader } from '@/components/platform/JetInviteHeader';
+import { JetInviteHero } from '@/components/platform/JetInviteHero';
+import { JetInviteEvents } from '@/components/platform/JetInviteEvents';
+import { JetInviteHowItWorks } from '@/components/platform/JetInviteHowItWorks';
+import { JetInviteOrderSection } from '@/components/platform/JetInviteOrderSection';
+import { PlatformFooter } from '@/components/platform/PlatformFooter';
 
-import React, { useState } from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
-import { caroleEtBenjaminWedding } from '@/data/wedding-config';
-import { EnvelopeAnimation } from '@/components/EnvelopeAnimation';
-import { AudioPlayer } from '@/components/AudioPlayer';
-import { InvitationCover } from '@/components/InvitationCover';
-import { EngagementSection } from '@/components/EngagementSection';
-import { InvitationMessage } from '@/components/InvitationMessage';
-import { WeddingCountdown } from '@/components/WeddingCountdown';
-import { WeddingSchedule } from '@/components/WeddingSchedule';
-import { WeddingLocation } from '@/components/WeddingLocation';
-import { PhotoGallery } from '@/components/PhotoGallery';
-import { RSVPButton } from '@/components/RSVPButton';
-import { WeddingFooter } from '@/components/WeddingFooter';
-import { FloatingControls } from '@/components/FloatingControls';
+export const metadata: Metadata = {
+  title: 'JetInvite.fun — Invitations & Faire-part en ligne en quelques clics !',
+  description:
+    'Créez et commandez votre invitation personnalisée en ligne : Mariage, Anniversaire, Baptême, Graduation, Cérémonie... Commande simple, design sur mesure et livraison rapide.',
+  openGraph: {
+    title: 'JetInvite.fun — Invitations & Faire-part en ligne en quelques clics !',
+    description:
+      'Mariage, Anniversaire, Baptême, Graduation, Cérémonie... Commandez votre invitation personnalisée et recevez-la rapidement.',
+    url: 'https://jetinvite.fun',
+    siteName: 'JetInvite',
+    images: [
+      {
+        url: '/assets/jetinvite-logo.png',
+        width: 1200,
+        height: 630,
+        alt: 'JetInvite.fun',
+      },
+    ],
+    locale: 'fr_FR',
+    type: 'website',
+  },
+};
 
-export default function WeddingPage() {
-  const [isOpened, setIsOpened] = useState(false);
-  const [audioTriggered, setAudioTriggered] = useState(false);
-
-  const handleOpenEnvelope = () => {
-    setIsOpened(true);
-    setAudioTriggered(true);
-  };
-
+export default function HomePage() {
   return (
-    <main className="relative min-h-screen bg-wedding-green-deep text-wedding-ivory-light">
-      {/* Background Music Player */}
-      <AudioPlayer
-        audioSrc={caroleEtBenjaminWedding.music.audioSrc}
-        autoPlayTrigger={audioTriggered}
-      />
-
-      <AnimatePresence mode="wait">
-        {!isOpened ? (
-          /* SCÈNE 1 & 2 : L'Arrivée et l'Ouverture de l'Enveloppe */
-          <motion.div
-            key="envelope"
-            initial={{ opacity: 1 }}
-            exit={{ opacity: 0, scale: 0.98, transition: { duration: 0.8, ease: 'easeInOut' } }}
-            className="w-full"
-          >
-            <EnvelopeAnimation
-              wedding={caroleEtBenjaminWedding}
-              onOpened={handleOpenEnvelope}
-            />
-          </motion.div>
-        ) : (
-          /* SCÈNES 3 À 10 : L'EXPÉRIENCE DU FAIRE-PART */
-          <motion.div
-            key="invitation-content"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-            className="w-full flex flex-col"
-          >
-            {/* Scène 3 : Présentation des mariés & Couverture (Photo 1) */}
-            <InvitationCover wedding={caroleEtBenjaminWedding} />
-
-            {/* Section Engagement : Alliances & Mains unies (Photo 2) */}
-            <EngagementSection wedding={caroleEtBenjaminWedding} />
-
-            {/* Scène 4 : Message officiel d'invitation */}
-            <InvitationMessage wedding={caroleEtBenjaminWedding} />
-
-            {/* Scène 5 : Compte à rebours officiel */}
-            <WeddingCountdown wedding={caroleEtBenjaminWedding} />
-
-            {/* Scène 6 : Programme détaillé du mariage */}
-            <WeddingSchedule wedding={caroleEtBenjaminWedding} />
-
-            {/* Scène 7 : Localisation & Accès GPS */}
-            <WeddingLocation wedding={caroleEtBenjaminWedding} />
-
-            {/* Scène 8 : Galerie photographique interactive */}
-            <PhotoGallery wedding={caroleEtBenjaminWedding} />
-
-            {/* Scène 9 : Confirmation de présence (RSVP WhatsApp) */}
-            <RSVPButton wedding={caroleEtBenjaminWedding} />
-
-            {/* Scène 10 : Conclusion & Signature */}
-            <WeddingFooter wedding={caroleEtBenjaminWedding} />
-
-            {/* Contrôles d'accès rapide flottants */}
-            <FloatingControls wedding={caroleEtBenjaminWedding} visible={isOpened} />
-          </motion.div>
-        )}
-      </AnimatePresence>
+    <main className="min-h-screen bg-[#faf7fd] text-slate-900 selection:bg-purple-200 selection:text-purple-900">
+      <JetInviteHeader />
+      <JetInviteHero />
+      <JetInviteEvents />
+      <JetInviteHowItWorks />
+      <JetInviteOrderSection />
+      <PlatformFooter />
     </main>
   );
 }
