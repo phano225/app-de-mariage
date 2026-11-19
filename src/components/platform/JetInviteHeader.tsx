@@ -35,11 +35,11 @@ export function JetInviteHeader() {
           <a href="#evenements" className="hover:text-purple-700 transition-colors">
             Nos invitations
           </a>
+          <a href="#exemples" className="hover:text-purple-700 transition-colors">
+            Nos Réalisations
+          </a>
           <a href="#comment-ca-marche" className="hover:text-purple-700 transition-colors">
             Comment ça marche ?
-          </a>
-          <a href="#exemples" className="hover:text-purple-700 transition-colors">
-            À propos
           </a>
         </nav>
 
@@ -90,6 +90,13 @@ export function JetInviteHeader() {
             className="block text-slate-700 hover:text-purple-700 text-base py-1"
           >
             Nos invitations
+          </a>
+          <a
+            href="#exemples"
+            onClick={() => setMobileMenuOpen(false)}
+            className="block text-slate-700 hover:text-purple-700 text-base py-1"
+          >
+            Nos Réalisations
           </a>
           <a
             href="#comment-ca-marche"

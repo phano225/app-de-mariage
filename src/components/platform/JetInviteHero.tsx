@@ -55,15 +55,15 @@ export function JetInviteHero() {
                 <span>Passer une commande</span>
               </a>
 
-              <Link
-                href="/mariage/carole-et-benjamin"
+              <a
+                href="#exemples"
                 className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-white/95 hover:bg-white text-[#1e0e3e] border border-purple-200 font-bold text-xs sm:text-sm shadow-sm transition-all hover:border-purple-300"
               >
                 <div className="w-5 h-5 rounded-full border border-purple-400 flex items-center justify-center">
                   <Play className="w-2.5 h-2.5 fill-[#1e0e3e] text-[#1e0e3e] ml-0.5" />
                 </div>
-                <span>Voir des exemples</span>
-              </Link>
+                <span>Voir les réalisations</span>
+              </a>
             </div>
 
             {/* 3 Value badges */}

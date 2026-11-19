@@ -3,6 +3,7 @@ import { Metadata } from 'next';
 import { JetInviteHeader } from '@/components/platform/JetInviteHeader';
 import { JetInviteHero } from '@/components/platform/JetInviteHero';
 import { JetInviteEvents } from '@/components/platform/JetInviteEvents';
+import { JetInviteShowcaseCarousel } from '@/components/platform/JetInviteShowcaseCarousel';
 import { JetInviteHowItWorks } from '@/components/platform/JetInviteHowItWorks';
 import { JetInviteOrderSection } from '@/components/platform/JetInviteOrderSection';
 import { PlatformFooter } from '@/components/platform/PlatformFooter';
@@ -36,6 +37,7 @@ export default function HomePage() {
       <JetInviteHeader />
       <JetInviteHero />
       <JetInviteEvents />
+      <JetInviteShowcaseCarousel />
       <JetInviteHowItWorks />
       <JetInviteOrderSection />
       <PlatformFooter />
