@@ -221,7 +221,7 @@ Carole & Benjamin.`,
     title: 'Faire-part de Mariage — Carole & Benjamin | 30 Janvier 2027',
     description: 'Invitation officielle au mariage de Carole et Benjamin le samedi 30 janvier 2027 à Dabou et Lopou, Côte d’Ivoire.',
     ogImage: '/images/carole-benjamin/og-mariage-carole-benjamin.jpg',
-    url: 'https://mariage.carole-benjamin.ci',
+    url: 'https://app-de-mariage.vercel.app',
   },
 };
 

@@ -42,18 +42,18 @@ export const metadata: Metadata = {
   title: caroleEtBenjaminWedding.seo.title,
   description: caroleEtBenjaminWedding.seo.description,
   authors: [{ name: 'Carole & Benjamin' }],
-  metadataBase: new URL('https://mariage-carole-benjamin.ci'),
+  metadataBase: new URL('https://app-de-mariage.vercel.app'),
   openGraph: {
     title: caroleEtBenjaminWedding.seo.title,
     description: caroleEtBenjaminWedding.seo.description,
-    url: 'https://mariage-carole-benjamin.ci',
+    url: 'https://app-de-mariage.vercel.app',
     siteName: 'Mariage Carole & Benjamin',
     images: [
       {
         url: caroleEtBenjaminWedding.seo.ogImage,
         width: 1200,
         height: 630,
-        alt: 'Faire-part de Mariage Carole & Benjamin',
+        alt: 'Faire-part de Mariage Carole & Benjamin — 30 Janvier 2027',
       },
     ],
     locale: 'fr_FR',
