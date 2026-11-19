@@ -42,12 +42,12 @@ export const metadata: Metadata = {
   title: caroleEtBenjaminWedding.seo.title,
   description: caroleEtBenjaminWedding.seo.description,
   authors: [{ name: 'Carole & Benjamin' }],
-  metadataBase: new URL('https://app-de-mariage.vercel.app'),
+  metadataBase: new URL('https://jetinvite.fun'),
   openGraph: {
     title: caroleEtBenjaminWedding.seo.title,
     description: caroleEtBenjaminWedding.seo.description,
-    url: 'https://app-de-mariage.vercel.app',
-    siteName: 'Mariage Carole & Benjamin',
+    url: 'https://jetinvite.fun',
+    siteName: 'JetInvite.fun',
     images: [
       {
         url: caroleEtBenjaminWedding.seo.ogImage,
@@ -66,7 +66,14 @@ export const metadata: Metadata = {
     images: [caroleEtBenjaminWedding.seo.ogImage],
   },
   icons: {
-    icon: '/favicon.ico',
+    icon: [
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/icon.png', type: 'image/png', sizes: '512x512' },
+    ],
+    apple: [
+      { url: '/apple-icon.png', sizes: '180x180', type: 'image/png' },
+    ],
+    shortcut: '/favicon.ico',
   },
 };
 
