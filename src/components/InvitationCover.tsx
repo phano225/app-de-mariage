@@ -113,7 +113,7 @@ export const InvitationCover: React.FC<InvitationCoverProps> = ({ wedding }) => 
           <span className="text-wedding-gold">•</span>
           <span className="flex items-center gap-2">
             <Heart className="w-3.5 h-3.5 text-wedding-orange fill-wedding-orange" />
-            Réception Familiale à Lopou
+            Réception dans la cour familiale de Lopou
           </span>
         </motion.div>
       </div>

@@ -59,7 +59,7 @@ export const AudioPlayer: React.FC<AudioPlayerProps> = ({
         ref={audioRef}
         src={audioSrc}
         loop
-        preload="none"
+        preload="auto"
         onError={() => {
           // File not provided yet; keep UI gracefully visible for when file is dropped
           setAudioAvailable(false);

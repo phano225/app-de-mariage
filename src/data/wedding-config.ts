@@ -214,8 +214,8 @@ Carole & Benjamin.`,
   music: {
     enabled: true,
     audioSrc: '/audio/mariage-musique.mp3',
-    title: 'Douce mélodie d’amour',
-    artist: 'Ambiance nuptiale & acoustique',
+    title: 'Jusqu’à la gare',
+    artist: 'Daphne',
   },
   seo: {
     title: 'Faire-part de Mariage — Carole & Benjamin | 30 Janvier 2027',
