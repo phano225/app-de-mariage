@@ -20,6 +20,7 @@ import {
   Check,
   User,
   Phone,
+  Camera,
 } from 'lucide-react';
 
 export interface EventTypeConfig {
@@ -216,10 +217,40 @@ const PRESET_PALETTES: PalettePreset[] = [
   { id: 'electric-cyan', name: 'Cyan Électrique & Navy', primaryColor: '#00D2D3', accentColor: '#0A192F', tag: 'High-Tech & B2B' },
 ];
 
-const DURATION_OPTIONS = [
-  { id: '1m', label: '1 mois après l’événement (Recommandé)', description: 'Idéal pour le jour J, les invitations et les remerciements des invités' },
-  { id: '3m', label: '3 mois après l’événement', description: 'Pour conserver les photos souvenirs, messages et vidéos en ligne' },
-  { id: '6m', label: '6 mois (Formule Prolongée)', description: 'Archivage longue durée pour toute la famille et les partenaires' },
+export interface DurationOption {
+  id: string;
+  label: string;
+  price: string;
+  badge?: string;
+  recommended?: boolean;
+  description: string;
+}
+
+const DURATION_OPTIONS: DurationOption[] = [
+  {
+    id: '2w',
+    label: '2 semaines après l’événement',
+    price: '15 000 FCFA',
+    badge: 'Formule Flash',
+    recommended: false,
+    description: 'Idéal pour les événements proches, le jour J et la diffusion rapide',
+  },
+  {
+    id: '1m',
+    label: '1 mois après l’événement',
+    price: '35 000 FCFA',
+    badge: 'Recommandé',
+    recommended: true,
+    description: 'Idéal pour le jour J, les invitations, les relances et les remerciements des invités',
+  },
+  {
+    id: '3m',
+    label: '3 mois après l’événement',
+    price: '45 000 FCFA',
+    badge: 'Prestige Souvenir',
+    recommended: false,
+    description: 'Pour conserver les photos souvenirs, messages et album en ligne pour toute la famille',
+  },
 ];
 
 export function JetInviteOrderSection() {
@@ -417,7 +448,7 @@ export function JetInviteOrderSection() {
       setIsSubmitting(false);
     }
 
-    const durationLabel = DURATION_OPTIONS.find((d) => d.id === formData.hostingDuration)?.label || formData.hostingDuration;
+    const selectedDuration = DURATION_OPTIONS.find((d) => d.id === formData.hostingDuration) || DURATION_OPTIONS[1];
     const colorLabel = formData.isCustomColor
       ? `Personnalisée (Primaire: ${formData.customPrimaryColor}, Accent: ${formData.customAccentColor})`
       : PRESET_PALETTES.find((p) => p.id === formData.selectedPaletteId)?.name || 'Sur-mesure';
@@ -434,12 +465,14 @@ export function JetInviteOrderSection() {
       `🎨 *Thème Couleurs :* ${colorLabel}\n` +
       `🔤 *${currentEvent.accessoryLabel} :* ${effectiveAccessory}\n` +
       `🎵 *Musique souhaitée :* ${effectiveMusic}\n` +
-      `⏳ *Hébergement :* ${durationLabel}\n\n` +
+      `⏳ *Hébergement :* ${selectedDuration.label} (${selectedDuration.price})\n` +
+      `💰 *Tarif retenu :* ${selectedDuration.price}\n\n` +
+      `📸 *Photos (max 6) :* Je vous envoie mes 6 photos souvenirs directement ici dans la discussion WhatsApp.\n` +
       `👤 *Commanditaire :* ${formData.clientName}\n` +
       `📱 *Mon WhatsApp :* ${formData.clientWhatsapp}\n` +
       `📲 *WhatsApp RSVP Invités :* ${formData.rsvpWhatsapp || formData.clientWhatsapp}\n` +
-      (formData.notes ? `📝 *Notes particulières :* ${formData.notes}\n` : '') +
-      `\nJe suis prêt(e) à vous transmettre les photos nécessaires pour lancer la création. Merci !`;
+      (formData.notes ? `📝 *Informations complémentaires :* ${formData.notes}\n` : '') +
+      `\nJe reste disponible pour vous fournir toute précision complémentaire. Merci !`;
 
     const encoded = encodeURIComponent(message);
     const targetNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '2250777620864';
@@ -916,45 +949,90 @@ export function JetInviteOrderSection() {
                   </div>
                 </div>
 
-                {/* DURÉE D'HÉBERGEMENT DU LIEN EN LIGNE */}
+                {/* DURÉE D'HÉBERGEMENT DU LIEN EN LIGNE & TARIFS */}
                 <div className="pt-2 border-t border-slate-100">
-                  <div className="flex items-center gap-2 mb-3">
-                    <label className="text-xs font-bold uppercase tracking-wider text-slate-700">
-                      Durée de maintien du lien en ligne
-                    </label>
-                    <span className="text-[10px] px-2 py-0.5 rounded-full bg-slate-100 text-slate-500 font-mono">
-                      Politique d'hébergement
-                    </span>
+                  <div className="flex items-center justify-between mb-3">
+                    <div className="flex items-center gap-2">
+                      <label className="text-xs font-bold uppercase tracking-wider text-slate-700">
+                        Durée de maintien du lien en ligne
+                      </label>
+                      <span className="text-[10px] px-2 py-0.5 rounded-full bg-slate-100 text-slate-500 font-mono">
+                        Tarif unique tout inclus
+                      </span>
+                    </div>
                   </div>
-                  <div className="space-y-2">
+
+                  <div className="space-y-2.5">
                     {DURATION_OPTIONS.map((d) => (
                       <label
                         key={d.id}
-                        className={`flex items-start gap-3 p-3.5 rounded-xl border cursor-pointer transition-all ${
+                        className={`flex items-center justify-between gap-3 p-4 rounded-xl border cursor-pointer transition-all ${
                           formData.hostingDuration === d.id
-                            ? 'border-purple-600 bg-purple-50/60 shadow-sm ring-1 ring-purple-600/20'
-                            : 'border-slate-200 hover:border-slate-300'
+                            ? 'border-purple-600 bg-purple-50/70 shadow-sm ring-2 ring-purple-600/20'
+                            : 'border-slate-200 hover:border-slate-300 bg-white'
                         }`}
                       >
-                        <input
-                          type="radio"
-                          name="hostingDuration"
-                          value={d.id}
-                          checked={formData.hostingDuration === d.id}
-                          onChange={() => update('hostingDuration', d.id)}
-                          className="mt-1 text-purple-600 focus:ring-purple-500"
-                        />
-                        <div>
-                          <div className="text-xs font-bold text-slate-800">{d.label}</div>
-                          <div className="text-[11px] text-slate-500">{d.description}</div>
+                        <div className="flex items-start gap-3 min-w-0">
+                          <input
+                            type="radio"
+                            name="hostingDuration"
+                            value={d.id}
+                            checked={formData.hostingDuration === d.id}
+                            onChange={() => update('hostingDuration', d.id)}
+                            className="mt-1 text-purple-600 focus:ring-purple-500 shrink-0"
+                          />
+                          <div>
+                            <div className="flex items-center gap-2 flex-wrap">
+                              <span className="text-xs font-bold text-slate-900">{d.label}</span>
+                              {d.badge && (
+                                <span
+                                  className={`text-[10px] px-2 py-0.5 rounded-full font-bold ${
+                                    d.recommended
+                                      ? 'bg-purple-600 text-white'
+                                      : 'bg-slate-100 text-slate-600'
+                                  }`}
+                                >
+                                  {d.badge}
+                                </span>
+                              )}
+                            </div>
+                            <div className="text-[11px] text-slate-500 mt-0.5">{d.description}</div>
+                          </div>
+                        </div>
+
+                        <div className="text-right shrink-0 pl-2">
+                          <span className="font-extrabold text-sm sm:text-base text-purple-950 font-mono">
+                            {d.price}
+                          </span>
                         </div>
                       </label>
                     ))}
                   </div>
+
                   <p className="text-[11px] text-slate-400 mt-2 flex items-center gap-1.5">
                     <AlertCircle className="w-3.5 h-3.5 text-slate-400 shrink-0" />
                     <span>Passé ce délai, le lien est désactivé et archivé pour préserver les ressources.</span>
                   </p>
+                </div>
+
+                {/* NOTICE PHOTOS SOUVENIRS & INFORMATIONS SUPPLÉMENTAIRES */}
+                <div className="p-4 rounded-2xl bg-gradient-to-r from-amber-50 to-orange-50/60 border border-amber-200/80 text-amber-950 space-y-2">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-2 font-bold text-xs uppercase tracking-wider text-amber-900">
+                      <Camera className="w-4 h-4 text-amber-600" />
+                      <span>Photos souvenirs & Informations supplémentaires</span>
+                    </div>
+                    <span className="text-[10px] px-2.5 py-0.5 rounded-full bg-amber-200/80 text-amber-900 font-bold font-mono">
+                      6 photos grand max
+                    </span>
+                  </div>
+                  <p className="text-xs text-amber-900/90 leading-relaxed">
+                    <strong>Inutile de charger vos photos ici !</strong> Dès que vous aurez validé ce formulaire, la conversation WhatsApp officielle s’ouvrira automatiquement avec notre équipe. Vous pourrez alors nous transmettre directement vos <strong>6 photos souvenirs maximum</strong> (pour la couverture, l’album et les illustrations), ainsi que toute information ou consigne supplémentaire.
+                  </p>
+                  <div className="text-[11px] text-amber-800 flex items-center gap-1.5 pt-1.5 border-t border-amber-200/60">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-amber-700 shrink-0" />
+                    <span>Notre équipe se chargera de vous contacter sur WhatsApp pour valider chaque détail avant la mise en ligne.</span>
+                  </div>
                 </div>
               </motion.div>
             )}
@@ -1077,6 +1155,8 @@ export function JetInviteOrderSection() {
                   <div>• <strong>Musique :</strong> {formData.musicChoice || currentEvent.defaultMusic}</div>
                   <div>• <strong>Lien généré :</strong> <span className="font-mono text-purple-700 underline">jetinvite.fun/{currentEvent.slugPrefix}/{previewSlug}</span></div>
                   <div>• <strong>Durée d'hébergement :</strong> {DURATION_OPTIONS.find((d) => d.id === formData.hostingDuration)?.label}</div>
+                  <div>• <strong>Tarif de la formule :</strong> <span className="font-extrabold text-sm font-mono text-purple-900">{DURATION_OPTIONS.find((d) => d.id === formData.hostingDuration)?.price}</span></div>
+                  <div>• <strong>Photos :</strong> Jusqu’à 6 photos souvenirs (à envoyer directement dans la discussion WhatsApp)</div>
                   <div className="pt-2 text-emerald-700 font-bold border-t border-purple-200/60 flex items-center gap-1.5">
                     <CheckCircle2 className="w-4 h-4 text-emerald-600" />
                     <span>Livraison express du lien : sous 24h à 48h chrono avec garantie de conformité</span>
