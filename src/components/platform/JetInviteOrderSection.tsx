@@ -505,7 +505,7 @@ export function JetInviteOrderSection() {
             Configurez votre invitation en ligne
           </h2>
           <p className="text-slate-600 text-sm sm:text-base max-w-xl mx-auto">
-            Remplissez les informations de votre événement. Votre faire-part interactif sera prêt en 24h à 48h chrono.
+            Remplissez les informations de votre événement. Votre faire-part interactif sera prêt en 24h à 72h chrono.
           </p>
         </div>
 
@@ -1051,7 +1051,7 @@ export function JetInviteOrderSection() {
                     Vos coordonnées pour la livraison
                   </h3>
                   <p className="text-xs text-slate-500 mt-1">
-                    Notre équipe vous contactera sur WhatsApp pour valider la maquette sous 24h à 48h.
+                    Notre équipe vous contactera sur WhatsApp pour valider la maquette sous 24h à 72h.
                   </p>
                 </div>
 
@@ -1159,7 +1159,7 @@ export function JetInviteOrderSection() {
                   <div>• <strong>Photos :</strong> Jusqu’à 6 photos souvenirs (à envoyer directement dans la discussion WhatsApp)</div>
                   <div className="pt-2 text-emerald-700 font-bold border-t border-purple-200/60 flex items-center gap-1.5">
                     <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-                    <span>Livraison express du lien : sous 24h à 48h chrono avec garantie de conformité</span>
+                    <span>Livraison express du lien : sous 24h à 72h chrono avec garantie de conformité</span>
                   </div>
                 </div>
               </motion.div>

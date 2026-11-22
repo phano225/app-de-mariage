@@ -114,7 +114,7 @@ export function OrderWizard() {
             Commandez votre faire-part en ligne
           </h2>
           <p className="text-stone-300 text-base max-w-xl mx-auto">
-            Remplissez ce formulaire en 2 minutes. Notre studio prépare votre animation sur-mesure et vous livre votre lien personnalisé sous 24h à 48h.
+            Remplissez ce formulaire en 2 minutes. Notre studio prépare votre animation sur-mesure et vous livre votre lien personnalisé sous 24h à 72h.
           </p>
         </div>
 
@@ -447,7 +447,7 @@ export function OrderWizard() {
                   <div>• <strong>Date :</strong> {formData.date || 'À définir'} {formData.time ? `à ${formData.time}` : ''}</div>
                   <div>• <strong>Enveloppe :</strong> {THEME_COLORS.find((c) => c.id === formData.envelopeColor)?.name}</div>
                   <div>• <strong>Lien généré :</strong> jetinvite.fun/mariage/{formData.names ? formData.names.toLowerCase().replace(/[^a-z0-9]+/g, '-') : 'votre-nom'}</div>
-                  <div className="pt-2 text-emerald-400 font-medium">✓ Délai de confection : 24h à 48h chrono</div>
+                  <div className="pt-2 text-emerald-400 font-medium">✓ Délai de confection : 24h à 72h chrono</div>
                 </div>
               </motion.div>
             )}
