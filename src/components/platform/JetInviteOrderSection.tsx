@@ -21,7 +21,10 @@ import {
   User,
   Phone,
   Camera,
+  FileText,
+  Download,
 } from 'lucide-react';
+import { OrderReceiptModal, OrderReceiptData } from './OrderReceiptModal';
 
 export interface EventTypeConfig {
   id: string;
@@ -288,12 +291,16 @@ export function JetInviteOrderSection() {
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [orderRef, setOrderRef] = useState<string | null>(null);
-  const [countdown, setCountdown] = useState(5);
+  const [countdown, setCountdown] = useState(7);
+  const [isReceiptOpen, setIsReceiptOpen] = useState(false);
+  const [receiptData, setReceiptData] = useState<OrderReceiptData | null>(null);
 
   const handleReturnHome = () => {
     setStep(1);
     setSubmitted(false);
     setOrderRef(null);
+    setIsReceiptOpen(false);
+    setReceiptData(null);
     setFormData({
       eventType: 'mariage',
       titleOrNames: '',
@@ -319,9 +326,9 @@ export function JetInviteOrderSection() {
   };
 
   useEffect(() => {
-    if (!submitted) return;
+    if (!submitted || isReceiptOpen) return;
 
-    setCountdown(5);
+    setCountdown(7);
     const timer = setInterval(() => {
       setCountdown((prev) => {
         if (prev <= 1) {
@@ -334,7 +341,7 @@ export function JetInviteOrderSection() {
     }, 1000);
 
     return () => clearInterval(timer);
-  }, [submitted]);
+  }, [submitted, isReceiptOpen]);
 
   // Active event configuration
   const currentEvent = EVENT_CHOICES.find((e) => e.id === formData.eventType) || EVENT_CHOICES[0];
@@ -526,6 +533,49 @@ export function JetInviteOrderSection() {
     const cleanNumber = targetNumber.replace(/[^0-9]/g, '');
     const url = `https://wa.me/${cleanNumber}?text=${encoded}`;
     window.open(url, '_blank');
+
+    const calculatedSlug = formData.titleOrNames
+      ? formData.titleOrNames
+          .toLowerCase()
+          .normalize('NFD')
+          .replace(/[\u0300-\u036f]/g, '')
+          .replace(/[^a-z0-9]+/g, '-')
+          .replace(/^-+|-+$/g, '')
+      : 'votre-nom';
+
+    const now = new Date();
+    const dateFormatted = now.toLocaleDateString('fr-FR', {
+      weekday: 'long',
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit',
+    });
+
+    setReceiptData({
+      orderRef: generatedRef || (orderRef || 'JET-DEMO'),
+      createdAt: dateFormatted,
+      clientName: formData.clientName,
+      clientWhatsapp: formData.clientWhatsapp,
+      rsvpWhatsapp: formData.rsvpWhatsapp || formData.clientWhatsapp,
+      eventType: formData.eventType,
+      eventName: currentEvent.label,
+      eventEmoji: currentEvent.emoji,
+      titleOrNames: formData.titleOrNames,
+      date: formData.date,
+      time: formData.time,
+      ceremonyPlace: formData.ceremonyPlace,
+      receptionPlace: formData.receptionPlace || undefined,
+      colorTheme: colorLabel,
+      accessoryLabel: currentEvent.accessoryLabel,
+      accessoryValue: effectiveAccessory,
+      musicChoice: effectiveMusic,
+      durationLabel: selectedDuration.label,
+      price: selectedDuration.price,
+      previewUrl: `jetinvite.fun/${currentEvent.slugPrefix}/${calculatedSlug}`,
+    });
+
     setSubmitted(true);
   };
 
@@ -601,18 +651,40 @@ export function JetInviteOrderSection() {
                 </div>
               </div>
 
-              <div className="space-y-3 pt-2">
+              <div className="space-y-4 pt-2">
+                {/* Button Télécharger Reçu Officiel */}
+                {receiptData && (
+                  <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+                    <button
+                      type="button"
+                      onClick={() => setIsReceiptOpen(true)}
+                      className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-stone-950 font-bold text-xs uppercase tracking-wider shadow-lg shadow-amber-500/25 transition-all hover:scale-105 active:scale-95"
+                    >
+                      <Download className="w-4 h-4" />
+                      <span>Télécharger mon Reçu Officiel (PDF)</span>
+                    </button>
+                  </div>
+                )}
+
                 <p className="text-xs text-slate-500 font-medium">
-                  Redirection automatique vers l’accueil dans <span className="font-bold text-purple-700 font-mono text-sm">{countdown}s</span>...
+                  {isReceiptOpen ? (
+                    <span className="text-amber-800 font-bold">
+                      📄 Reçu officiel ouvert — Redirection en pause
+                    </span>
+                  ) : (
+                    <>
+                      Redirection automatique vers l’accueil dans <span className="font-bold text-purple-700 font-mono text-sm">{countdown}s</span>...
+                    </>
+                  )}
                 </p>
 
                 <button
                   type="button"
                   onClick={handleReturnHome}
-                  className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-bold text-xs uppercase tracking-wider shadow-md transition-all hover:scale-105 active:scale-95"
+                  className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl border border-slate-200 hover:border-slate-300 bg-white text-slate-700 font-semibold text-xs transition-colors"
                 >
                   <span>Retourner à l'accueil maintenant</span>
-                  <ArrowRight className="w-4 h-4" />
+                  <ArrowRight className="w-3.5 h-3.5" />
                 </button>
               </div>
             </motion.div>
@@ -1323,6 +1395,15 @@ export function JetInviteOrderSection() {
           )}
         </div>
       </div>
+
+      {/* RECEIPT MODAL */}
+      {receiptData && (
+        <OrderReceiptModal
+          isOpen={isReceiptOpen}
+          onClose={() => setIsReceiptOpen(false)}
+          data={receiptData}
+        />
+      )}
     </section>
   );
 }
