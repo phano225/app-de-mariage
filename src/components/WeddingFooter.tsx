@@ -62,7 +62,7 @@ export const WeddingFooter: React.FC<WeddingFooterProps> = ({ wedding }) => {
             Célébration d’Amour &amp; d’Union perpétuelle
             <Heart className="w-3 h-3 text-wedding-orange fill-wedding-orange" />
           </p>
-          <p>© 2027 Carole &amp; Benjamin • Tous droits réservés.</p>
+          <p>© {wedding.eventDateFormatted.year} {wedding.coupleNames.display} • Tous droits réservés.</p>
         </div>
       </div>
     </footer>

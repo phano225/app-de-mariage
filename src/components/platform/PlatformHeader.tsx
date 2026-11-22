@@ -49,7 +49,7 @@ export function PlatformHeader() {
         {/* CTA Buttons */}
         <div className="hidden md:flex items-center gap-4">
           <Link
-            href="/mariage/carole-et-benjamin"
+            href="/mariage/demo"
             target="_blank"
             className="text-xs px-4 py-2 rounded-full border border-stone-700 hover:border-amber-500/50 text-stone-300 hover:text-amber-200 transition-colors"
           >
@@ -107,7 +107,7 @@ export function PlatformHeader() {
           </a>
           <div className="pt-4 border-t border-stone-800 flex flex-col gap-3">
             <Link
-              href="/mariage/carole-et-benjamin"
+              href="/mariage/demo"
               target="_blank"
               className="text-center py-2.5 rounded-full border border-stone-700 text-stone-200 text-sm"
             >

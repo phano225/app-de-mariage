@@ -73,7 +73,7 @@ export const PhotoGallery: React.FC<PhotoGalleryProps> = ({ wedding }) => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="font-sans text-xs sm:text-sm uppercase tracking-widest text-wedding-green-deep/70 max-w-lg"
           >
-            Les visuels officiels de Carole &amp; Benjamin • Cliquez pour agrandir
+            Les visuels officiels de {wedding.coupleNames.display} • Cliquez pour agrandir
           </motion.p>
         </div>
 

@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     siteName: 'JetInvite',
     images: [
       {
-        url: '/assets/C&B.jpeg',
+        url: '/images/demos/mariage/cover.jpg',
         width: 1200,
         height: 630,
         alt: 'JetInvite.fun — Faire-part d\'exception',

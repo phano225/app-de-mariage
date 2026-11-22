@@ -225,11 +225,129 @@ Carole & Benjamin.`,
   },
 };
 
+export const demoWeddingConfig: WeddingConfig = {
+  slug: 'demo',
+  status: 'active',
+  coupleNames: {
+    bride: 'Aïcha',
+    groom: 'Ibrahim',
+    display: 'Aïcha & Ibrahim',
+    initials: 'A & I',
+    monogram: 'AI',
+  },
+  weddingDate: '2027-12-18T14:00:00+00:00', // Africa/Abidjan (GMT/UTC+0)
+  timeZone: 'Africa/Abidjan',
+  eventDateFormatted: {
+    fullFrench: 'Samedi 18 Décembre 2027',
+    day: 'Samedi',
+    dateNumber: '18',
+    monthFrench: 'Décembre',
+    year: '2027',
+  },
+  tagline: 'L’Amour est une promesse éternelle',
+  invitationText: `Chers parents, chers amis et chers proches,
+
+C'est avec une immense joie et une émotion profonde que nous vous convions à célébrer l'union de nos deux cœurs et de nos familles.
+
+Votre présence, vos sourires et vos bénédictions feront de cette journée un souvenir précieux gravé à jamais dans notre mémoire.
+
+Nous serons très honorés de vous compter parmi nous pour célébrer ce moment exceptionnel.
+
+Avec tout notre amour,
+
+Aïcha & Ibrahim.`,
+  conclusionMessage: 'Nous avons hâte de partager ce jour béni avec vous.',
+  theme: {
+    primaryGreen: '#0B2219',
+    secondaryOrange: '#D4AF37',
+    ivory: '#F9F6F0',
+    gold: '#D4AF37',
+    darkGreen: '#061610',
+    lightIvory: '#FCFBF8',
+    softGreen: '#EBF4F0',
+    softOrange: '#FAF4E8',
+  },
+  schedule: [
+    {
+      id: 'civil',
+      time: '14h00',
+      title: 'Bénédiction Nuptiale & Cérémonie',
+      location: 'Grand Salon Sofitel Hôtel Ivoire, Cocody',
+      description: 'Célébration officielle et échange des vœux et alliances',
+      icon: 'civil',
+      mapUrl: 'https://www.google.com/maps/search/?api=1&query=Sofitel+Abidjan+Hotel+Ivoire',
+      highlight: false,
+    },
+    {
+      id: 'reception',
+      time: '18h00',
+      title: 'Dîner de Gala & Soirée Dansante',
+      location: 'Espace Étoilé des Jardins de Cocody, Abidjan',
+      description: 'Cocktail de bienvenue, banquet gastronomique et réjouissances',
+      icon: 'reception',
+      mapUrl: 'https://www.google.com/maps/search/?api=1&query=Cocody+Abidjan+Cote+d+Ivoire',
+      highlight: true,
+    },
+  ],
+  locations: [
+    {
+      id: 'ceremonie-sofitel',
+      name: 'Sofitel Hôtel Ivoire',
+      category: 'Cérémonie Civile',
+      address: 'Boulevard Hassan II, Cocody',
+      city: 'Abidjan',
+      country: 'Côte d’Ivoire',
+      mapUrl: 'https://www.google.com/maps/search/?api=1&query=Sofitel+Abidjan+Hotel+Ivoire',
+      accessTip: 'Parking sécurisé disponible. Arrivée recommandée dès 13h30.',
+    },
+    {
+      id: 'reception-jardins',
+      name: 'Les Jardins de Cocody',
+      category: 'Réception & Festivités',
+      address: 'Cocody Ambassades',
+      city: 'Abidjan',
+      country: 'Côte d’Ivoire',
+      mapUrl: 'https://www.google.com/maps/search/?api=1&query=Cocody+Abidjan+Cote+d+Ivoire',
+      accessTip: 'Service voiturier disponible à l’entrée de l’espace.',
+    },
+  ],
+  contact: {
+    whatsappNumber: '+2250777620864',
+    whatsappFormatted: '+225 07 77 62 08 64',
+    rsvpMessage: 'Bonjour Aïcha et Ibrahim, je vous confirme avec joie ma présence à votre mariage du samedi 18 décembre 2027.',
+    contactNote: 'Confirmation de présence souhaitée pour l\'organisation du banquet.',
+  },
+  gallery: [
+    {
+      id: 'portrait-couple-demo',
+      src: '/images/demos/mariage/cover.jpg',
+      alt: 'Portrait officiel de mariage Aïcha et Ibrahim',
+      caption: 'Aïcha & Ibrahim — Félicité & Élégance',
+      aspectRatio: 'portrait',
+      tag: 'Les Mariés',
+    },
+  ],
+  music: {
+    enabled: true,
+    audioSrc: '/audio/mariage-musique.mp3',
+    title: 'Jusqu’à la gare',
+    artist: 'Daphne',
+  },
+  seo: {
+    title: 'Faire-part de Mariage — Aïcha & Ibrahim | Démo JetInvite',
+    description: 'Exemple d’invitation numérique animée pour mariage avec enveloppe 3D, musique et confirmation WhatsApp.',
+    ogImage: '/images/demos/mariage/cover.jpg',
+    url: 'https://jetinvite.fun/mariage/demo',
+  },
+};
+
 // Registry of weddings by slug for reusability
 export const weddingRegistry: Record<string, WeddingConfig> = {
+  'demo': demoWeddingConfig,
+  'aicha-et-ibrahim': demoWeddingConfig,
   'carole-et-benjamin': caroleEtBenjaminWedding,
 };
 
 export function getWeddingBySlug(slug: string): WeddingConfig {
-  return weddingRegistry[slug] || caroleEtBenjaminWedding;
+  return weddingRegistry[slug] || demoWeddingConfig;
 }

@@ -18,25 +18,25 @@ export function DemoShowcase() {
             <div className="lg:col-span-7 space-y-6">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 text-xs font-mono uppercase tracking-widest">
                 <Sparkles className="w-3.5 h-3.5" />
-                Exemple en production réelle
+                Démo interactive officielle
               </div>
 
               <h2 className="font-serif text-3xl sm:text-4xl text-stone-100 font-bold tracking-tight">
-                Le mariage royal de Carole & Benjamin
+                Le mariage royal d'Aïcha & Ibrahim
               </h2>
 
               <p className="text-stone-300 text-base leading-relaxed">
-                Découvrez grandeur nature ce que reçoivent vos invités. Dès qu'ils ouvrent le lien, l'enveloppe verte émeraude scellée à la cire dorée s'ouvre avec la mélodie romantique de Stevie Wonder, révélant la carte officielle et tous les détails de la célébration.
+                Découvrez grandeur nature ce que reçoivent vos invités. Dès qu'ils ouvrent le lien, l'enveloppe 3D vert émeraude scellée à la cire dorée s'ouvre au rythme d'une douce mélodie romantique, révélant la carte officielle et tous les détails de la célébration.
               </p>
 
               <div className="space-y-3 pt-2 text-sm text-stone-300">
                 <div className="flex items-center gap-3">
                   <CheckCircle className="w-4 h-4 text-amber-400 shrink-0" />
-                  <span>Sceau de cire sur-mesure aux initiales <strong>« C & B 2027 »</strong></span>
+                  <span>Sceau de cire sur-mesure aux initiales <strong>« A & I 2027 »</strong></span>
                 </div>
                 <div className="flex items-center gap-3">
                   <CheckCircle className="w-4 h-4 text-amber-400 shrink-0" />
-                  <span>Boutons de géolocalisation pour la <strong>Mairie de Dabou</strong> et la <strong>Réception à Lopou</strong></span>
+                  <span>Boutons de géolocalisation pour le <strong>Sofitel Hôtel Ivoire</strong> et les <strong>Jardins de Cocody</strong></span>
                 </div>
                 <div className="flex items-center gap-3">
                   <CheckCircle className="w-4 h-4 text-amber-400 shrink-0" />
@@ -47,7 +47,7 @@ export function DemoShowcase() {
               {/* Action */}
               <div className="pt-4 flex flex-wrap gap-4 items-center">
                 <Link
-                  href="/mariage/carole-et-benjamin"
+                  href="/mariage/demo"
                   target="_blank"
                   className="inline-flex items-center gap-3 px-7 py-3.5 rounded-full bg-amber-500 hover:bg-amber-400 text-stone-950 font-bold text-sm tracking-wider uppercase shadow-lg shadow-amber-500/20 transition-all hover:scale-105"
                 >
@@ -57,7 +57,7 @@ export function DemoShowcase() {
                 </Link>
 
                 <span className="text-xs text-stone-400 font-mono">
-                  URL : jetinvite.fun/mariage/carole-et-benjamin
+                  URL : jetinvite.fun/mariage/demo
                 </span>
               </div>
             </div>
@@ -65,14 +65,14 @@ export function DemoShowcase() {
             {/* Right preview thumbnail */}
             <div className="lg:col-span-5 flex justify-center">
               <Link
-                href="/mariage/carole-et-benjamin"
+                href="/mariage/demo"
                 target="_blank"
                 className="group relative block w-full max-w-sm rounded-2xl overflow-hidden border-2 border-amber-500/40 shadow-2xl transition-all duration-300 hover:scale-105 hover:border-amber-400"
               >
                 <div className="relative aspect-[3/4] w-full bg-stone-950">
                   <Image
-                    src="/assets/C&B.jpeg"
-                    alt="Mariage Carole et Benjamin"
+                    src="/images/demos/mariage/cover.jpg"
+                    alt="Mariage Aïcha et Ibrahim"
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-700"
                   />

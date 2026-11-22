@@ -70,7 +70,7 @@ export function HeroSection() {
               </a>
 
               <Link
-                href="/mariage/carole-et-benjamin"
+                href="/mariage/demo"
                 target="_blank"
                 className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-7 py-4 rounded-full bg-stone-900/80 hover:bg-stone-800 text-stone-200 border border-stone-700 hover:border-amber-400/50 text-sm font-medium transition-all group"
               >
@@ -108,9 +108,9 @@ export function HeroSection() {
                       FAIRE-PART OFFICIEL
                     </p>
                     <h3 className="font-serif text-2xl text-amber-100 font-bold tracking-tight">
-                      Carole & Benjamin
+                      Aïcha & Ibrahim
                     </h3>
-                    <p className="text-[11px] text-amber-200/70">Samedi 30 Janvier 2027</p>
+                    <p className="text-[11px] text-amber-200/70">Samedi 18 Décembre 2027</p>
                   </div>
 
                   {/* Envelope representation with seal */}
@@ -120,7 +120,7 @@ export function HeroSection() {
                     
                     {/* Simulated wax seal */}
                     <div className="relative z-10 w-16 h-16 rounded-full bg-gradient-to-tr from-amber-700 via-amber-500 to-amber-300 shadow-lg shadow-amber-950/80 border-2 border-amber-200/60 flex items-center justify-center text-stone-950 font-serif font-black text-xs tracking-wider">
-                      C & B
+                      A & I
                     </div>
 
                     <div className="absolute bottom-2 text-[9px] uppercase tracking-wider text-amber-200/70 font-mono">
@@ -146,7 +146,7 @@ export function HeroSection() {
                     </div>
 
                     <Link
-                      href="/mariage/carole-et-benjamin"
+                      href="/mariage/demo"
                       target="_blank"
                       className="block w-full py-2 rounded-lg bg-amber-500 text-stone-950 font-bold text-xs uppercase tracking-wider hover:bg-amber-400 transition-colors shadow-md shadow-amber-500/20"
                     >

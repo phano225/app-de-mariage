@@ -17,11 +17,13 @@ export function JetInviteEvents() {
           </p>
         </div>
 
-        {/* 6 Category Pills matching the mockup */}
+        {/* 6 Category Pills matching the 6 live demos */}
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3.5">
           {/* 1. Mariage */}
           <a
-            href="#commander"
+            href="/mariage/demo"
+            target="_blank"
+            rel="noopener noreferrer"
             className="flex flex-col items-center justify-center py-5 px-3 rounded-2xl bg-white border border-slate-100 shadow-sm hover:shadow-md transition-all hover:-translate-y-0.5 group"
           >
             <div className="w-12 h-12 rounded-2xl bg-amber-50 group-hover:bg-amber-100 flex items-center justify-center mb-2.5 transition-colors">
@@ -30,11 +32,16 @@ export function JetInviteEvents() {
             <span className="font-bold text-slate-800 text-xs group-hover:text-[#7c24ec] transition-colors">
               Mariage
             </span>
+            <span className="text-[10px] text-purple-600 font-semibold mt-0.5 opacity-80 group-hover:opacity-100">
+              Voir la démo →
+            </span>
           </a>
 
           {/* 2. Anniversaire */}
           <a
-            href="#commander"
+            href="/anniversaire/demo"
+            target="_blank"
+            rel="noopener noreferrer"
             className="flex flex-col items-center justify-center py-5 px-3 rounded-2xl bg-white border border-slate-100 shadow-sm hover:shadow-md transition-all hover:-translate-y-0.5 group"
           >
             <div className="w-12 h-12 rounded-2xl bg-pink-50 group-hover:bg-pink-100 flex items-center justify-center mb-2.5 transition-colors text-pink-500">
@@ -43,57 +50,80 @@ export function JetInviteEvents() {
             <span className="font-bold text-slate-800 text-xs group-hover:text-[#7c24ec] transition-colors">
               Anniversaire
             </span>
+            <span className="text-[10px] text-pink-600 font-semibold mt-0.5 opacity-80 group-hover:opacity-100">
+              Voir la démo →
+            </span>
           </a>
 
           {/* 3. Baptême */}
           <a
-            href="#commander"
+            href="/bapteme/demo"
+            target="_blank"
+            rel="noopener noreferrer"
             className="flex flex-col items-center justify-center py-5 px-3 rounded-2xl bg-white border border-slate-100 shadow-sm hover:shadow-md transition-all hover:-translate-y-0.5 group"
           >
             <div className="w-12 h-12 rounded-2xl bg-sky-50 group-hover:bg-sky-100 flex items-center justify-center mb-2.5 transition-colors">
-              <span className="text-2xl">✝️</span>
+              <span className="text-2xl">🕊️</span>
             </div>
             <span className="font-bold text-slate-800 text-xs group-hover:text-[#7c24ec] transition-colors">
               Baptême
             </span>
-          </a>
-
-          {/* 4. Graduation */}
-          <a
-            href="#commander"
-            className="flex flex-col items-center justify-center py-5 px-3 rounded-2xl bg-white border border-slate-100 shadow-sm hover:shadow-md transition-all hover:-translate-y-0.5 group"
-          >
-            <div className="w-12 h-12 rounded-2xl bg-indigo-50 group-hover:bg-indigo-100 flex items-center justify-center mb-2.5 transition-colors text-indigo-600">
-              <GraduationCap className="w-6 h-6 stroke-[2.2]" />
-            </div>
-            <span className="font-bold text-slate-800 text-xs group-hover:text-[#7c24ec] transition-colors">
-              Graduation
+            <span className="text-[10px] text-sky-600 font-semibold mt-0.5 opacity-80 group-hover:opacity-100">
+              Voir la démo →
             </span>
           </a>
 
-          {/* 5. Événement pro */}
+          {/* 4. Hommage & Obsèques */}
           <a
-            href="#commander"
+            href="/hommage/demo"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex flex-col items-center justify-center py-5 px-3 rounded-2xl bg-white border border-slate-100 shadow-sm hover:shadow-md transition-all hover:-translate-y-0.5 group"
+          >
+            <div className="w-12 h-12 rounded-2xl bg-stone-100 group-hover:bg-stone-200 flex items-center justify-center mb-2.5 transition-colors">
+              <span className="text-2xl">🕯️</span>
+            </div>
+            <span className="font-bold text-slate-800 text-xs group-hover:text-[#7c24ec] transition-colors">
+              Hommage / Obsèques
+            </span>
+            <span className="text-[10px] text-stone-600 font-semibold mt-0.5 opacity-80 group-hover:opacity-100">
+              Voir la démo →
+            </span>
+          </a>
+
+          {/* 5. Conférence Pro */}
+          <a
+            href="/conference/demo"
+            target="_blank"
+            rel="noopener noreferrer"
             className="flex flex-col items-center justify-center py-5 px-3 rounded-2xl bg-white border border-slate-100 shadow-sm hover:shadow-md transition-all hover:-translate-y-0.5 group"
           >
             <div className="w-12 h-12 rounded-2xl bg-purple-50 group-hover:bg-purple-100 flex items-center justify-center mb-2.5 transition-colors text-[#7c24ec]">
               <CalendarDays className="w-6 h-6 stroke-[2.2]" />
             </div>
             <span className="font-bold text-slate-800 text-xs group-hover:text-[#7c24ec] transition-colors">
-              Événement pro
+              Conférence / Pro
+            </span>
+            <span className="text-[10px] text-purple-600 font-semibold mt-0.5 opacity-80 group-hover:opacity-100">
+              Voir la démo →
             </span>
           </a>
 
-          {/* 6. Autres événements */}
+          {/* 6. Festival & Soirée */}
           <a
-            href="#commander"
+            href="/festival/demo"
+            target="_blank"
+            rel="noopener noreferrer"
             className="flex flex-col items-center justify-center py-5 px-3 rounded-2xl bg-white border border-slate-100 shadow-sm hover:shadow-md transition-all hover:-translate-y-0.5 group"
           >
-            <div className="w-12 h-12 rounded-2xl bg-slate-50 group-hover:bg-slate-100 flex items-center justify-center mb-2.5 transition-colors text-slate-600">
-              <MoreHorizontal className="w-6 h-6 stroke-[2.5]" />
+            <div className="w-12 h-12 rounded-2xl bg-fuchsia-50 group-hover:bg-fuchsia-100 flex items-center justify-center mb-2.5 transition-colors">
+              <span className="text-2xl">🎸</span>
             </div>
             <span className="font-bold text-slate-800 text-xs group-hover:text-[#7c24ec] transition-colors">
-              Autres événements
+              Festival &amp; Soirée
+            </span>
+            <span className="text-[10px] text-fuchsia-600 font-semibold mt-0.5 opacity-80 group-hover:opacity-100">
+              Voir la démo →
             </span>
           </a>
         </div>

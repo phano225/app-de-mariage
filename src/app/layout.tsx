@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import { Cormorant_Garamond, Playfair_Display, Plus_Jakarta_Sans, Alex_Brush } from 'next/font/google';
 import './globals.css';
-import { caroleEtBenjaminWedding } from '@/data/wedding-config';
 
 const cormorant = Cormorant_Garamond({
   subsets: ['latin'],
@@ -39,21 +38,22 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: caroleEtBenjaminWedding.seo.title,
-  description: caroleEtBenjaminWedding.seo.description,
-  authors: [{ name: 'Carole & Benjamin' }],
+  title: 'JetInvite.fun — Invitations & Faire-part en ligne en quelques clics !',
+  description:
+    'Créez et commandez votre invitation personnalisée en ligne : Mariage, Anniversaire, Baptême, Hommage, Conférence, Festival... Design sur mesure et livraison rapide.',
   metadataBase: new URL('https://jetinvite.fun'),
   openGraph: {
-    title: caroleEtBenjaminWedding.seo.title,
-    description: caroleEtBenjaminWedding.seo.description,
+    title: 'JetInvite.fun — Invitations & Faire-part en ligne en quelques clics !',
+    description:
+      'Créez et commandez votre invitation personnalisée en ligne : Mariage, Anniversaire, Baptême, Hommage, Conférence, Festival... Design sur mesure et livraison rapide.',
     url: 'https://jetinvite.fun',
     siteName: 'JetInvite.fun',
     images: [
       {
-        url: caroleEtBenjaminWedding.seo.ogImage,
+        url: '/assets/jetinvite-logo.png',
         width: 1200,
         height: 630,
-        alt: 'Faire-part de Mariage Carole & Benjamin — 30 Janvier 2027',
+        alt: 'JetInvite.fun — Invitations en ligne',
       },
     ],
     locale: 'fr_FR',
@@ -61,9 +61,10 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: caroleEtBenjaminWedding.seo.title,
-    description: caroleEtBenjaminWedding.seo.description,
-    images: [caroleEtBenjaminWedding.seo.ogImage],
+    title: 'JetInvite.fun — Invitations & Faire-part en ligne',
+    description:
+      'Invitations interactives pour Mariage, Anniversaire, Baptême, Hommage, Conférence et Festival.',
+    images: ['/assets/jetinvite-logo.png'],
   },
   icons: {
     icon: [

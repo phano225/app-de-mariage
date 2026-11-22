@@ -68,8 +68,8 @@ export const InvitationCover: React.FC<InvitationCoverProps> = ({ wedding }) => 
           <div className="relative w-full h-full rounded-2xl overflow-hidden bg-black border border-wedding-gold/30">
             {/* Main Couple Photo */}
             <Image
-              src="/assets/C&B.jpeg"
-              alt="Portrait officiel de Carole et Benjamin"
+              src={wedding.gallery[0]?.src || '/images/demos/mariage/cover.jpg'}
+              alt={`Portrait officiel de ${wedding.coupleNames.display}`}
               fill
               priority
               className="object-cover object-top transition-transform duration-700 hover:scale-105"
@@ -82,11 +82,11 @@ export const InvitationCover: React.FC<InvitationCoverProps> = ({ wedding }) => 
             {/* Bottom Photo Caption Banner */}
             <div className="absolute bottom-0 inset-x-0 p-5 text-center flex flex-col items-center">
               <span className="font-serif text-lg tracking-widest text-wedding-ivory-light font-semibold">
-                Carole &amp; Benjamin
+                {wedding.coupleNames.display}
               </span>
               <span className="inline-flex items-center gap-1.5 mt-1 text-xs uppercase tracking-widest text-wedding-orange font-medium">
                 <Calendar className="w-3.5 h-3.5" />
-                30 Janvier 2027 • Côte d’Ivoire
+                {wedding.eventDateFormatted.fullFrench}
               </span>
             </div>
           </div>
@@ -106,15 +106,15 @@ export const InvitationCover: React.FC<InvitationCoverProps> = ({ wedding }) => 
           transition={{ duration: 0.8, delay: 0.6 }}
           className="mt-8 flex flex-wrap items-center justify-center gap-4 text-xs sm:text-sm font-sans tracking-widest uppercase text-wedding-ivory/80"
         >
-          <span className="flex items-center gap-2">
-            <Heart className="w-3.5 h-3.5 text-wedding-orange fill-wedding-orange" />
-            Cérémonie Civile à Dabou
-          </span>
-          <span className="text-wedding-gold">•</span>
-          <span className="flex items-center gap-2">
-            <Heart className="w-3.5 h-3.5 text-wedding-orange fill-wedding-orange" />
-            Réception dans la cour familiale de Lopou
-          </span>
+          {wedding.schedule.map((item, idx) => (
+            <React.Fragment key={item.id}>
+              {idx > 0 && <span className="text-wedding-gold">•</span>}
+              <span className="flex items-center gap-2">
+                <Heart className="w-3.5 h-3.5 text-wedding-orange fill-wedding-orange" />
+                {item.title} ({item.location.split(',')[0]})
+              </span>
+            </React.Fragment>
+          ))}
         </motion.div>
       </div>
     </section>

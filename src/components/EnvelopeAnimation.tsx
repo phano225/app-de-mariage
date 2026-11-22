@@ -81,7 +81,7 @@ export const EnvelopeAnimation: React.FC<EnvelopeAnimationProps> = ({
         {/* Envelope Shell */}
         <div className="relative w-full h-full rounded-2xl bg-[#092218] border border-wedding-gold/50 shadow-envelope overflow-visible">
           
-          {/* 1. LA CARTE INTÉRIEURE (S'élève majestueusement et révèle Carole & Benjamin) */}
+          {/* 1. LA CARTE INTÉRIEURE (S'élève majestueusement) */}
           <motion.div
             initial={{ y: 0, opacity: 0 }}
             animate={
@@ -92,11 +92,11 @@ export const EnvelopeAnimation: React.FC<EnvelopeAnimationProps> = ({
             transition={{ duration: 1.3, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
             className="absolute inset-x-3 sm:inset-x-5 top-3 bottom-3 rounded-xl bg-paper-texture border-2 border-wedding-gold/70 shadow-2xl p-4 flex flex-col items-center justify-center text-center z-25"
           >
-            {/* Vraie Photo du Couple */}
+            {/* Photo du Couple */}
             <div className="relative w-18 h-18 sm:w-22 sm:h-22 rounded-full overflow-hidden border-2 border-wedding-gold shadow-md mb-2">
               <Image
-                src="/assets/C&B.jpeg"
-                alt="Carole & Benjamin"
+                src={wedding.gallery[0]?.src || '/images/demos/mariage/cover.jpg'}
+                alt={wedding.coupleNames.display}
                 fill
                 sizes="88px"
                 className="object-cover object-top"
@@ -112,10 +112,10 @@ export const EnvelopeAnimation: React.FC<EnvelopeAnimationProps> = ({
             </h2>
             <div className="w-12 h-[1.5px] bg-wedding-orange my-1.5 rounded-full" />
             <p className="font-sans text-[10px] sm:text-[11px] uppercase tracking-wider text-wedding-green-deep/90 font-medium">
-              Samedi 30 Janvier 2027
+              {wedding.eventDateFormatted.fullFrench}
             </p>
             <p className="font-sans text-[9px] uppercase tracking-widest text-wedding-orange font-semibold">
-              Mairie de Dabou • Lopou
+              {wedding.locations[0]?.name ? `${wedding.locations[0].name} • ${wedding.locations[0].city}` : 'Côte d’Ivoire'}
             </p>
           </motion.div>
 
@@ -192,15 +192,15 @@ export const EnvelopeAnimation: React.FC<EnvelopeAnimationProps> = ({
                       {/* Monogramme C & B rigoureusement centré */}
                       <div className="flex items-center justify-center gap-1 leading-none">
                         <span className="font-serif text-sm sm:text-base font-bold text-wedding-ivory-light">
-                          C
+                          {wedding.coupleNames.bride.charAt(0)}
                         </span>
                         <span className="text-[10px] text-wedding-gold font-light">&amp;</span>
                         <span className="font-serif text-sm sm:text-base font-bold text-wedding-ivory-light">
-                          B
+                          {wedding.coupleNames.groom.charAt(0)}
                         </span>
                       </div>
                       <span className="text-[8px] font-sans tracking-[0.2em] uppercase text-wedding-gold font-semibold mt-1">
-                        2027
+                        {wedding.eventDateFormatted.year}
                       </span>
                     </div>
                   </div>
