@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   Sparkles,
@@ -288,6 +288,53 @@ export function JetInviteOrderSection() {
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [orderRef, setOrderRef] = useState<string | null>(null);
+  const [countdown, setCountdown] = useState(5);
+
+  const handleReturnHome = () => {
+    setStep(1);
+    setSubmitted(false);
+    setOrderRef(null);
+    setFormData({
+      eventType: 'mariage',
+      titleOrNames: '',
+      date: '',
+      time: '11:00',
+      ceremonyPlace: '',
+      receptionPlace: '',
+      selectedPaletteId: 'emerald-gold',
+      customPrimaryColor: '#103928',
+      customAccentColor: '#D4AF37',
+      isCustomColor: false,
+      accessoryValue: '',
+      musicChoice: '',
+      hostingDuration: '1m',
+      clientName: '',
+      clientWhatsapp: '',
+      rsvpWhatsapp: '',
+      notes: '',
+    });
+    if (typeof window !== 'undefined') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
+  useEffect(() => {
+    if (!submitted) return;
+
+    setCountdown(5);
+    const timer = setInterval(() => {
+      setCountdown((prev) => {
+        if (prev <= 1) {
+          clearInterval(timer);
+          handleReturnHome();
+          return 0;
+        }
+        return prev - 1;
+      });
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, [submitted]);
 
   // Active event configuration
   const currentEvent = EVENT_CHOICES.find((e) => e.id === formData.eventType) || EVENT_CHOICES[0];
@@ -511,7 +558,67 @@ export function JetInviteOrderSection() {
 
         {/* Wizard Card */}
         <div className="bg-white rounded-3xl border border-purple-100 shadow-xl shadow-purple-900/5 p-6 sm:p-10 relative">
-          {/* Progress Steps Header */}
+          {submitted ? (
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              className="text-center py-6 sm:py-10 space-y-6"
+            >
+              <div className="w-20 h-20 mx-auto rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center shadow-lg shadow-emerald-500/20">
+                <CheckCircle2 className="w-10 h-10 stroke-[2.5]" />
+              </div>
+
+              <div className="space-y-2">
+                <span className="text-xs font-mono font-bold uppercase tracking-widest text-emerald-700 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-200">
+                  Commande transmise avec succès
+                </span>
+                <h3 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
+                  Merci pour votre confiance !
+                </h3>
+                {orderRef && (
+                  <p className="text-sm font-mono text-purple-700 font-bold">
+                    Numéro de commande : <span className="underline font-black">#{orderRef}</span>
+                  </p>
+                )}
+              </div>
+
+              <div className="max-w-md mx-auto p-5 rounded-2xl bg-purple-50/70 border border-purple-200 text-xs text-slate-700 text-left space-y-2.5">
+                <div className="font-bold text-purple-900 text-sm flex items-center gap-2">
+                  <MessageCircle className="w-4 h-4 text-emerald-600" />
+                  <span>Prochaines étapes sur WhatsApp :</span>
+                </div>
+                <div className="flex items-start gap-2">
+                  <span className="w-5 h-5 rounded-full bg-purple-200 text-purple-800 flex items-center justify-center text-[10px] font-bold shrink-0 mt-0.5">1</span>
+                  <span>L'application WhatsApp s'est ouverte avec les détails complets de votre célébration.</span>
+                </div>
+                <div className="flex items-start gap-2">
+                  <span className="w-5 h-5 rounded-full bg-purple-200 text-purple-800 flex items-center justify-center text-[10px] font-bold shrink-0 mt-0.5">2</span>
+                  <span>Envoyez directement vos <strong>6 photos souvenirs</strong> (grand max) dans la discussion.</span>
+                </div>
+                <div className="flex items-start gap-2">
+                  <span className="w-5 h-5 rounded-full bg-purple-200 text-purple-800 flex items-center justify-center text-[10px] font-bold shrink-0 mt-0.5">3</span>
+                  <span>Notre équipe prépare et calibre votre maquette interactive sous <strong>24h à 72h chrono</strong>.</span>
+                </div>
+              </div>
+
+              <div className="space-y-3 pt-2">
+                <p className="text-xs text-slate-500 font-medium">
+                  Redirection automatique vers l’accueil dans <span className="font-bold text-purple-700 font-mono text-sm">{countdown}s</span>...
+                </p>
+
+                <button
+                  type="button"
+                  onClick={handleReturnHome}
+                  className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl bg-purple-600 hover:bg-purple-700 text-white font-bold text-xs uppercase tracking-wider shadow-md transition-all hover:scale-105 active:scale-95"
+                >
+                  <span>Retourner à l'accueil maintenant</span>
+                  <ArrowRight className="w-4 h-4" />
+                </button>
+              </div>
+            </motion.div>
+          ) : (
+            <>
+              {/* Progress Steps Header */}
           <div className="grid grid-cols-4 text-center text-xs font-bold text-slate-400 mb-5 gap-1">
             <div className={`flex flex-col items-center gap-1 ${step >= 1 ? 'text-purple-700' : ''}`}>
               <span className={`w-6 h-6 rounded-full flex items-center justify-center text-[11px] font-mono ${step >= 1 ? 'bg-purple-600 text-white' : 'bg-slate-100 text-slate-500'}`}>1</span>
@@ -1212,16 +1319,7 @@ export function JetInviteOrderSection() {
               </button>
             )}
           </div>
-
-          {submitted && (
-            <div className="mt-4 p-4 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-semibold text-center space-y-1">
-              <div>
-                🎉 Votre commande {orderRef && <span className="font-bold underline">#{orderRef}</span>} a été enregistrée avec succès dans notre base de données !
-              </div>
-              <div className="text-[11px] text-emerald-700">
-                L'application WhatsApp s'est ouverte pour finaliser votre transmission. Nous prenons le relais immédiatement !
-              </div>
-            </div>
+            </>
           )}
         </div>
       </div>
