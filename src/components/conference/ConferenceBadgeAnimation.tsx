@@ -127,7 +127,7 @@ export const ConferenceBadgeAnimation: React.FC<ConferenceBadgeAnimationProps> =
                 <>
                   <QrCode className="w-20 h-20 text-[#0A192F]" />
                   <span className="text-[8px] font-mono text-slate-600 font-bold mt-1">
-                    {conference.badge.accessCode}
+                    {conference.badge.badgeNumber}
                   </span>
                 </>
               )}
@@ -142,7 +142,7 @@ export const ConferenceBadgeAnimation: React.FC<ConferenceBadgeAnimationProps> =
                 {conference.badge.holderRole}
               </p>
               <p className="text-[9px] font-mono text-slate-400 mt-1">
-                ID : {conference.badge.accessCode}
+                ID : {conference.badge.badgeNumber}
               </p>
             </div>
           </div>

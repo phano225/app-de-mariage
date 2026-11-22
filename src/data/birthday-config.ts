@@ -167,8 +167,8 @@ Venez prêts à vous amuser et à danser !`,
   music: {
     enabled: true,
     audioSrc: '/audio/anniversaire-musique.mp3',
-    title: 'Happy Birthday Kids Party',
-    artist: 'Festive Vibes',
+    title: 'Happy Birthday',
+    artist: 'Naza',
   },
   seo: {
     title: '🎉 Invitation Anniversaire — Malika a 8 ans !',

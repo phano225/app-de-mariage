@@ -1,0 +1,3 @@
+# Gitleaks ignore file
+# False positives
+47a9258007ba3b6a2b8993a2f71a95bd5d94cee2:src/data/conference-config.ts:generic-api-key:185

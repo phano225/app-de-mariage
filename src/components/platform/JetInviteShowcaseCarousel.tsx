@@ -71,7 +71,7 @@ const SHOWCASE_PROJECTS: ShowcaseProject[] = [
     image: '/images/demos/anniversaire/malika-photo.jpg',
     description:
       'Une fête pleine de magie : ouverture interactive d’une boîte cadeau 3D avec explosion de confettis multicolores, programme des jeux et confirmation RSVP WhatsApp pour les parents.',
-    musicTitle: 'Kids Party Celebration',
+    musicTitle: 'Naza — Happy Birthday',
     features: [
       'Boîte cadeau 3D interactive & explosion de confettis',
       'Compte à rebours festif avant la grande fête',
@@ -94,7 +94,7 @@ const SHOWCASE_PROJECTS: ShowcaseProject[] = [
     image: '/images/demos/bapteme/baby-liam.jpg',
     description:
       'Un sacrement rempli d’émotion : enveloppe bleu ciel pastel ornée d’un sceau colombe en or, présentation du parrain et de la marraine, itinéraire église et confirmation RSVP sur WhatsApp.',
-    musicTitle: 'Douce Grâce Divine — Harpe & Chœurs',
+    musicTitle: 'Eliyah — Adoration Piano Chrétien',
     features: [
       'Enveloppe bleu ciel pastel avec sceau colombe dorée 3D',
       'Verset spirituel et mot de bénédiction des parents',
@@ -117,7 +117,7 @@ const SHOWCASE_PROJECTS: ShowcaseProject[] = [
     image: '/images/demos/hommage/pepe-kouassi.jpg',
     description:
       'Un hommage plein de dignité et de paix : bougie commémorative virtuelle que l’on allume en souvenir, programme complet des obsèques, livre de condoléances et soutien à la famille sur WhatsApp.',
-    musicTitle: 'Recueillement & Paix Éternelle',
+    musicTitle: 'Eliyah — Recueillement & Adoration Piano',
     features: [
       'Bougie commémorative virtuelle interactive à allumer',
       'Faire-part officiel de la famille & verset de mémoire',
@@ -140,7 +140,7 @@ const SHOWCASE_PROJECTS: ShowcaseProject[] = [
     image: '/images/demos/conference/conference-keynote.jpg',
     description:
       'Un sommet de haut niveau : validation interactive d’un badge d’accès VIP avec QR code animé, programme complet des keynotes et panels, intervenants de prestige et accréditation sur WhatsApp.',
-    musicTitle: 'Executive Conference Ambience',
+    musicTitle: 'Meliodia AI — On Bouge',
     features: [
       'Badge d\'accès VIP interactif avec QR code et scan',
       'Profils des speakers et keynotes panafricains',
@@ -163,7 +163,7 @@ const SHOWCASE_PROJECTS: ShowcaseProject[] = [
     image: '/images/demos/festival/festival-cover.jpg',
     description:
       'La grande célébration de musique afro & amapiano : validation interactive d’un billet VIP holographique, line-up d’artistes et DJs, scènes en bord de lagune et billetterie WhatsApp.',
-    musicTitle: 'Afro Beats Festival Anthem',
+    musicTitle: 'Meliodia AI — Amapiano Beat Drop',
     features: [
       'Pass VIP holographique interactif avec souche détachable',
       'Line-up complet des DJs et artistes afrobeat & amapiano',

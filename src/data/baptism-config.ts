@@ -195,9 +195,9 @@ Nous serons infiniment heureux de vous compter parmi nous pour célébrer cette 
   },
   music: {
     enabled: true,
-    audioSrc: '/audio/mariage-musique.mp3',
-    title: 'Douce Grâce Divine',
-    artist: 'Mélodie Céleste',
+    audioSrc: '/audio/bapteme-musique.mp3',
+    title: 'Adoration Piano Chrétien',
+    artist: 'Eliyah',
   },
   seo: {
     title: '🕊️ Faire-part de Baptême — Liam Emmanuel | Démo JetInvite',

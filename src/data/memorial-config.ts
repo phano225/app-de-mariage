@@ -195,9 +195,9 @@ Endormi paisiblement dans l'espérance de la résurrection, dans sa 85ème anné
   },
   music: {
     enabled: true,
-    audioSrc: '/audio/mariage-musique.mp3',
-    title: 'Recueillement & Paix Éternelle',
-    artist: 'Mélodie Solennelle',
+    audioSrc: '/audio/hommage-musique.mp3',
+    title: 'Recueillement & Adoration Piano',
+    artist: 'Eliyah',
   },
   seo: {
     title: '🕯️ Hommage & Obsèques — Patriarche Kouassi (« Pépé Kouassi ») | Démo JetInvite',

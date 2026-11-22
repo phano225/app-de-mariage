@@ -55,7 +55,7 @@ export interface ConferenceConfig {
   };
   badge: {
     passType: string;
-    accessCode: string;
+    badgeNumber: string;
     holderName: string;
     holderRole: string;
     company: string;
@@ -182,7 +182,7 @@ export const fbeaConferenceConfig: ConferenceConfig = {
   },
   badge: {
     passType: 'PASS DÉLÉGUÉ VIP',
-    accessCode: 'FBEA-2027-VIP-0842',
+    badgeNumber: 'DÉLÉGUÉ-N°0842',
     holderName: 'M. / Mme le Délégué(e)',
     holderRole: 'Décideur / Entrepreneur Panafricain',
     company: 'Entreprise & Institution Partenaire',
@@ -195,9 +195,9 @@ export const fbeaConferenceConfig: ConferenceConfig = {
   },
   music: {
     enabled: true,
-    audioSrc: '/audio/mariage-musique.mp3',
-    title: 'Executive Conference Ambience',
-    artist: 'Corporate Inspiration',
+    audioSrc: '/audio/conference-musique.mp3',
+    title: 'On Bouge (Urban Tech & Business Beat)',
+    artist: 'Meliodia AI',
   },
   seo: {
     title: '💼 Forum des Bâtisseurs & Entrepreneurs Africains — FBEA 2027 | Démo JetInvite',

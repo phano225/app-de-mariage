@@ -176,9 +176,9 @@ export const aabdfFestivalConfig: FestivalConfig = {
   },
   music: {
     enabled: true,
-    audioSrc: '/audio/mariage-musique.mp3',
-    title: 'Afro Beats Festival Anthem',
-    artist: 'Abidjan Sound System',
+    audioSrc: '/audio/festival-musique.mp3',
+    title: 'Amapiano Beat Drop',
+    artist: 'Meliodia AI',
   },
   seo: {
     title: '🎸 Abidjan Afro Beats & Dance Festival 2027 | Démo JetInvite',
